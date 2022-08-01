@@ -9,5 +9,4 @@ public class MochaccinoServerApplication {
     public static void main(String[] args) {
         SpringApplication.run(MochaccinoServerApplication.class, args);
     }
-
 }
