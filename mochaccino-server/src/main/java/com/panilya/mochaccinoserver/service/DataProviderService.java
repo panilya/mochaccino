@@ -32,21 +32,24 @@ public class DataProviderService {
         }
 
         String csv = Format.toCsv(traverseCsvColumnsList(values)).header(true).separator(",").build().get();
+        System.out.println(csv);
     }
 
     private List<Csv.Column> traverseCsvColumnsList(List<String> columns) {
         List<Csv.Column> result = new ArrayList<>();
 
-        if (columns.contains("firstName")) {
-            result.add(Csv.Column.of("first_name", () -> faker.name().firstName()));
-        } else if (columns.contains("fullName")) {
-            result.add(Csv.Column.of("full_name", () -> faker.name().fullName()));
-        } else if (columns.contains("lastName")) {
-            result.add(Csv.Column.of("last_name", () -> faker.name().lastName()));
-        } else if (columns.contains("phoneNumber")) {
-            result.add(Csv.Column.of("phone_number", () -> faker.phoneNumber().phoneNumber()));
-        } else if (columns.contains("address")) {
-            result.add(Csv.Column.of("address", () -> faker.address().fullAddress()));
+        for (String column : columns) {
+            if (columns.contains("firstName")) {
+                result.add(Csv.Column.of("first_name", () -> faker.name().firstName()));
+            } else if (columns.contains("fullName")) {
+                result.add(Csv.Column.of("full_name", () -> faker.name().fullName()));
+            } else if (columns.contains("lastName")) {
+                result.add(Csv.Column.of("last_name", () -> faker.name().lastName()));
+            } else if (columns.contains("phoneNumber")) {
+                result.add(Csv.Column.of("phone_number", () -> faker.phoneNumber().phoneNumber()));
+            } else if (columns.contains("address")) {
+                result.add(Csv.Column.of("address", () -> faker.address().fullAddress()));
+            }
         }
         return result;
     }
