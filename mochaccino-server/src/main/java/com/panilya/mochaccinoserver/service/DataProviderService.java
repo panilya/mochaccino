@@ -32,6 +32,7 @@ public class DataProviderService {
         }
 
         String csv = Format.toCsv(traverseCsvColumnsList(values)).header(true).separator(",").build().get();
+//        System.out.println("---- " + faker.phoneNumber().phoneNumber());
         System.out.println(csv);
     }
 
@@ -39,15 +40,15 @@ public class DataProviderService {
         List<Csv.Column> result = new ArrayList<>();
 
         for (String column : columns) {
-            if (columns.contains("firstName")) {
+            if (column.contains("firstName")) {
                 result.add(Csv.Column.of("first_name", () -> faker.name().firstName()));
-            } else if (columns.contains("fullName")) {
+            } else if (column.contains("fullName")) {
                 result.add(Csv.Column.of("full_name", () -> faker.name().fullName()));
-            } else if (columns.contains("lastName")) {
+            } else if (column.contains("lastName")) {
                 result.add(Csv.Column.of("last_name", () -> faker.name().lastName()));
-            } else if (columns.contains("phoneNumber")) {
+            } else if (column.contains("phoneNumber")) {
                 result.add(Csv.Column.of("phone_number", () -> faker.phoneNumber().phoneNumber()));
-            } else if (columns.contains("address")) {
+            } else if (column.contains("address")) {
                 result.add(Csv.Column.of("address", () -> faker.address().fullAddress()));
             }
         }
