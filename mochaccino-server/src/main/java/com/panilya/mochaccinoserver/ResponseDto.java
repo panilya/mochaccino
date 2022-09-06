@@ -1,25 +1,16 @@
-package com.panilya.mochaccinoserver.model;
+package com.panilya.mochaccinoserver;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
-import lombok.Getter;
 
-@Getter
 @Builder
-public class ResponseEntity {
+public class ResponseDto {
 
-    @JsonProperty("id")
     private final String id;
-    @JsonProperty("fullName")
     private final String fullName;
-    @JsonProperty("firstName")
     private final String firstName;
-    @JsonProperty("lastName")
     private final String lastName;
-    @JsonProperty("phoneNumber")
     private final String phoneNumber;
-    @JsonProperty("address")
     private final String address;
-
 
 }

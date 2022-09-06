@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController("api/v1/")
+@RestController()
 public class DataGenerationController {
 
     private final DataGenerationService dataGenerationService;
@@ -19,7 +19,7 @@ public class DataGenerationController {
     }
 
     @PostMapping("/data")
-    public ResponseEntity generateMockData(@RequestBody RequestEntity requestEntity) {
-        return dataGenerationService.generateData(requestEntity);
+    public org.springframework.http.ResponseEntity<String> generateMockData(@RequestBody RequestEntity requestEntity) {
+        return org.springframework.http.ResponseEntity.ok(dataGenerationService.generateData(requestEntity));
     }
 }

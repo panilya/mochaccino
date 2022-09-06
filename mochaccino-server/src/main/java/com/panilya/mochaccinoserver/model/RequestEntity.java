@@ -17,14 +17,18 @@ public class RequestEntity {
     @JsonProperty("address")
     private final boolean address;
 
+    @JsonProperty("format")
+    private final String format;
+
     //TODO: I guess there is a better way to implement this
-    public RequestEntity(boolean fullName, boolean phoneNumber, boolean id, boolean firstName, boolean lastName, boolean address) {
+    public RequestEntity(boolean fullName, boolean phoneNumber, boolean id, boolean firstName, boolean lastName, boolean address, String format) {
         this.fullName = fullName;
         this.phoneNumber = phoneNumber;
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
+        this.format = format;
     }
     
     @Override
