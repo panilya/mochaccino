@@ -16,6 +16,9 @@ public class RequestEntityUtils {
         Field[] declaredFields = object.getClass().getDeclaredFields();
         for (Field f : declaredFields) {
             f.setAccessible(true);
+            if (!(f.get(object) instanceof Boolean)) {
+                continue;
+            }
             Boolean variable = (Boolean) f.get(object);
             if (variable) {
                 variablesToProcess.add(f.getName());
