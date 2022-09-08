@@ -3,30 +3,16 @@ package com.panilya.mochaccinoserver.utils;
 import com.panilya.mochaccinoserver.service.DataFormat;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.List;
 
 public class RequestEntityUtils {
 
-    /**
-     * Util method that allows to extract variables with 'true' state in order to process request.
-     * @throws IllegalAccessException
-     */
-    public static List<String> getValues(Object object) throws IllegalAccessException {
-        List<String> variablesToProcess = new ArrayList<>(object.getClass().getDeclaredFields().length); // initialCapacity of the List is the total number of fields in passed Object
-
-        Field[] declaredFields = object.getClass().getDeclaredFields();
-        for (Field f : declaredFields) {
-            f.setAccessible(true);
-            if (!(f.get(object) instanceof Boolean)) {
-                continue;
-            }
-            Boolean variable = (Boolean) f.get(object);
-            if (variable) {
-                variablesToProcess.add(f.getName());
-            }
-        }
-        return variablesToProcess;
+    public static List<String> getValues(Object object) throws IllegalAccessException, NoSuchFieldException {
+        Field providers = object.getClass().getDeclaredField("providers");
+        providers.setAccessible(true);
+        List<String> providersVariable = (List<String>) providers.get(object);
+        System.out.println(providersVariable);
+        return providersVariable;
     }
 
     public static DataFormat readFormatString(Object object) throws NoSuchFieldException, IllegalAccessException {
