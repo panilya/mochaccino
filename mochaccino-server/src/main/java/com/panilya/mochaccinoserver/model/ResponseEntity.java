@@ -8,8 +8,6 @@ import lombok.Getter;
 @Builder
 public class ResponseEntity {
 
-    @JsonProperty("id")
-    private final String id;
     @JsonProperty("fullName")
     private final String fullName;
     @JsonProperty("firstName")

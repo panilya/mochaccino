@@ -4,8 +4,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class RequestEntity {
 
-    @JsonProperty("id")
-    private final boolean id;
     @JsonProperty("fullName")
     private final boolean fullName;
     @JsonProperty("firstName")
@@ -21,10 +19,9 @@ public class RequestEntity {
     private final String format;
 
     //TODO: I guess there is a better way to implement this
-    public RequestEntity(boolean fullName, boolean phoneNumber, boolean id, boolean firstName, boolean lastName, boolean address, String format) {
+    public RequestEntity(boolean fullName, boolean phoneNumber, boolean firstName, boolean lastName, boolean address, String format) {
         this.fullName = fullName;
         this.phoneNumber = phoneNumber;
-        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -34,7 +31,6 @@ public class RequestEntity {
     @Override
     public String toString() {
         return "RequestEntity{" +
-                "id=" + id +
                 ", fullName=" + fullName +
                 ", firstName=" + firstName +
                 ", lastName=" + lastName +
