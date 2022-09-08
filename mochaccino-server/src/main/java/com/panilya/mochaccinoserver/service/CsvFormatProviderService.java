@@ -27,7 +27,7 @@ public class CsvFormatProviderService implements ProviderService {
         List<String> values;
         try {
             values = RequestEntityUtils.getValues(requestEntity);
-        } catch (IllegalAccessException e) {
+        } catch (IllegalAccessException | NoSuchFieldException e) {
             System.err.print("Error while getting values from RequestEntity in RequestEntityUtils.getValues");
             values = Collections.emptyList();
         }

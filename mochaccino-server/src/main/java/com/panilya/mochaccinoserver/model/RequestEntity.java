@@ -1,41 +1,23 @@
 package com.panilya.mochaccinoserver.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
+import lombok.ToString;
 
+import java.util.List;
+
+@Getter
+@ToString
 public class RequestEntity {
 
-    @JsonProperty("fullName")
-    private final boolean fullName;
-    @JsonProperty("firstName")
-    private final boolean firstName;
-    @JsonProperty("lastName")
-    private final boolean lastName;
-    @JsonProperty("phoneNumber")
-    private final boolean phoneNumber;
-    @JsonProperty("address")
-    private final boolean address;
-
+    @JsonProperty("providers")
+    private final List<String> providers;
     @JsonProperty("format")
     private final String format;
 
-    //TODO: I guess there is a better way to implement this
-    public RequestEntity(boolean fullName, boolean phoneNumber, boolean firstName, boolean lastName, boolean address, String format) {
-        this.fullName = fullName;
-        this.phoneNumber = phoneNumber;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.address = address;
+
+    public RequestEntity(List<String> providers, String format) {
+        this.providers = providers;
         this.format = format;
-    }
-    
-    @Override
-    public String toString() {
-        return "RequestEntity{" +
-                ", fullName=" + fullName +
-                ", firstName=" + firstName +
-                ", lastName=" + lastName +
-                ", phoneNumber=" + phoneNumber +
-                ", address=" + address +
-                '}';
     }
 }
