@@ -17,7 +17,7 @@ public class JsonFormatProviderService implements ProviderService {
 
     @Override
     public String provideData(RequestEntity requestEntity) {
-        return null; // TODO
+        return "JSON support in development"; // TODO
     }
 
 }
