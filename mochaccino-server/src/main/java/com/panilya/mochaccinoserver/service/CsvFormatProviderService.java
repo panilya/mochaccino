@@ -8,9 +8,7 @@ import net.datafaker.fileformats.Format;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class CsvFormatProviderService implements ProviderService {
@@ -40,20 +38,14 @@ public class CsvFormatProviderService implements ProviderService {
     private List<Csv.Column> traverseCsvColumnsList(List<String> columns) {
         List<Csv.Column> result = new ArrayList<>();
 
+        Map<String, DataProvider> supportedProviders = new HashMap<>();
+        supportedProviders.put("firstName", DataProvider.FIRST_NAME);
+        supportedProviders.put("lastName", DataProvider.LAST_NAME);
+
         for (String column : columns) {
-            if (column.contains("firstName")) {
-                result.add(Csv.Column.of("first_name", () -> faker.name().firstName()));
-            } else if (column.contains("fullName")) {
-                result.add(Csv.Column.of("full_name", () -> faker.name().fullName()));
-            } else if (column.contains("lastName")) {
-                result.add(Csv.Column.of("last_name", () -> faker.name().lastName()));
-            } else if (column.contains("phoneNumber")) {
-                result.add(Csv.Column.of("phone_number", () -> faker.phoneNumber().phoneNumber()));
-            } else if (column.contains("address")) {
-                result.add(Csv.Column.of("address", () -> faker.address().fullAddress()));
-            }
+            DataProvider provider = supportedProviders.get(column);
+            result.add(Csv.Column.of(provider.getHeader(), provider.getProvider().apply(faker)));
         }
         return result;
     }
-
 }

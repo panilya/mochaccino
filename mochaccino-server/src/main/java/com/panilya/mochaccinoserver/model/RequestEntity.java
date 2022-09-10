@@ -14,8 +14,6 @@ public class RequestEntity {
     private final List<String> providers;
     @JsonProperty("format")
     private final String format;
-
-
     public RequestEntity(List<String> providers, String format) {
         this.providers = providers;
         this.format = format;
