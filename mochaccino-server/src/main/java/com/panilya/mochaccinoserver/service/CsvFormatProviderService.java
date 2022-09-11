@@ -8,7 +8,9 @@ import net.datafaker.fileformats.Format;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 @Service
 public class CsvFormatProviderService implements ProviderService {
@@ -38,12 +40,8 @@ public class CsvFormatProviderService implements ProviderService {
     private List<Csv.Column> traverseCsvColumnsList(List<String> columns) {
         List<Csv.Column> result = new ArrayList<>();
 
-        Map<String, DataProvider> supportedProviders = new HashMap<>();
-        supportedProviders.put("firstName", DataProvider.FIRST_NAME);
-        supportedProviders.put("lastName", DataProvider.LAST_NAME);
-
         for (String column : columns) {
-            DataProvider provider = supportedProviders.get(column);
+            DataProvider provider = DataProvider.of(column);
             result.add(Csv.Column.of(provider.getHeader(), provider.getProvider().apply(faker)));
         }
         return result;
