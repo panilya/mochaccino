@@ -32,7 +32,11 @@ public class CsvFormatProviderService implements ProviderService {
             values = Collections.emptyList();
         }
 
-        String csv = Format.toCsv(traverseCsvColumnsList(values)).header(true).separator(",").limit(requestEntity.getLimit()).build().get();
+        String csv = Format.toCsv(traverseCsvColumnsList(values))
+                .header(true)
+                .separator(requestEntity.getSeparator())
+                .limit(requestEntity.getLimit())
+                .build().get();
         System.out.println(csv);
         return csv;
     }

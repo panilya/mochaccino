@@ -16,10 +16,13 @@ public class RequestEntity {
     private final String format;
     @JsonProperty("limit")
     private final int limit;
+    @JsonProperty("separator")
+    private final String separator;
 
-    public RequestEntity(List<String> providers, String format, int limit) {
+    public RequestEntity(List<String> providers, String format, int limit, String separator) {
         this.providers = providers;
         this.format = format;
         this.limit = limit;
+        this.separator = separator;
     }
 }
