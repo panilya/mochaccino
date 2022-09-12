@@ -33,7 +33,7 @@ public class CsvFormatProviderService implements ProviderService {
         }
 
         String csv = Format.toCsv(traverseCsvColumnsList(values))
-                .header(true)
+                .header(requestEntity.isHeader())
                 .separator(requestEntity.getSeparator())
                 .limit(requestEntity.getLimit())
                 .build().get();
