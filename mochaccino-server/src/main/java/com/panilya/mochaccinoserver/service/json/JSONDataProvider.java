@@ -1,4 +1,4 @@
-package com.panilya.mochaccinoserver.service;
+package com.panilya.mochaccinoserver.service.json;
 
 import java.util.Arrays;
 import java.util.Collections;

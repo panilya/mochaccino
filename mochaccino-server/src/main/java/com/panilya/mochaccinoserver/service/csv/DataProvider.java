@@ -1,4 +1,4 @@
-package com.panilya.mochaccinoserver.service;
+package com.panilya.mochaccinoserver.service.csv;
 
 import net.datafaker.Faker;
 
@@ -26,11 +26,11 @@ public enum DataProvider {
         this.provider = provider;
     }
 
-    private static final Map<String, DataProvider> PROVIDER_MAP = Collections.unmodifiableMap(
+    private static final Map<String, DataProvider> CSV_PROVIDER_MAP = Collections.unmodifiableMap(
             Arrays.stream(values()).collect(Collectors.toMap(t -> t.name, Function.identity())));
 
     public static DataProvider of(String name) {
-        return PROVIDER_MAP.get(name);
+        return CSV_PROVIDER_MAP.get(name);
     }
 
     public String getName() {
