@@ -9,8 +9,9 @@ import java.util.Locale;
 @Configuration
 public class MochaccinoConfiguration {
 
-    @Bean
+    @Bean(name = "faker")
     public Faker faker() {
         return new Faker(new Locale("en", "US"));
     }
+
 }
