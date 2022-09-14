@@ -18,3 +18,5 @@ A Web Service that generates mock data for any use cases.
 - First name
 - Last name
 - Address
+- Country
+- City
