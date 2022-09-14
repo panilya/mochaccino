@@ -17,6 +17,7 @@ import java.util.List;
 public class CsvFormatProviderService implements ProviderService {
 
     private final Faker faker;
+    private static final String DEFAULT_SEPARATOR = ",";
 
     @Autowired
     public CsvFormatProviderService(Faker faker) {
@@ -35,7 +36,7 @@ public class CsvFormatProviderService implements ProviderService {
 
         String csv = Format.toCsv(traverseCsvColumnsList(values))
                 .header(requestEntity.isHeader())
-                .separator(requestEntity.getSeparator())
+                .separator(getSeparator(requestEntity))
                 .limit(requestEntity.getLimit())
                 .build().get();
         System.out.println(csv);
@@ -50,5 +51,12 @@ public class CsvFormatProviderService implements ProviderService {
             result.add(Csv.Column.of(provider.getHeader(), provider.getProvider().apply(faker)));
         }
         return result;
+    }
+
+    private String getSeparator(RequestEntity requestEntity) {
+        if (requestEntity.getSeparator() == null) {
+            return DEFAULT_SEPARATOR;
+        }
+        return requestEntity.getSeparator();
     }
 }

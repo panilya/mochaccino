@@ -37,7 +37,7 @@ public class JsonFormatProviderService implements ProviderService {
                         faker.collection(() -> JSONFormatPOJO.builder()
                                 .name(faker.name())
                                 .address(faker.address())
-                                .build()).len(1000).build());
+                                .build()).len(requestEntity.getLimit()).build());
 
         for (String column : values) {
             json.set(JSONDataProvider.of(column).getName(), JSONDataProvider.of(column).getProvider());
