@@ -20,3 +20,4 @@ A Web Service that generates mock data for any use cases.
 - Address
 - Country
 - City
+- Zip code
