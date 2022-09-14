@@ -9,7 +9,9 @@ import java.util.stream.Collectors;
 public enum JSONDataProvider {
     FIRST_NAME("firstName", jsonProvider -> jsonProvider.getName().firstName()),
     LAST_NAME("lastName", jsonProvider -> jsonProvider.getName().lastName()),
-    ADDRESS("address", jsonProvider -> jsonProvider.getAddress().fullAddress());
+    ADDRESS("address", jsonProvider -> jsonProvider.getAddress().fullAddress()),
+    COUNTRY("country", jsonProvider -> jsonProvider.getAddress().country()),
+    CITY("city", jsonProvider -> jsonProvider.getAddress().city());
 
     private final String name;
     private final Function<JSONFormatPOJO, Object> provider;
