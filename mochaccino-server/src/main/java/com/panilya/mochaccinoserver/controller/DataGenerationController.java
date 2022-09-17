@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController()
@@ -19,7 +20,7 @@ public class DataGenerationController {
     }
 
     @PostMapping("/data")
-    public ResponseEntity<String> generateMockData(@RequestBody RequestEntity requestEntity) {
-        return org.springframework.http.ResponseEntity.ok(dataGenerationService.generateData(requestEntity));
+    public ResponseEntity<String> generateMockData(@RequestBody RequestEntity requestEntity, @RequestParam String format) {
+        return org.springframework.http.ResponseEntity.ok(dataGenerationService.generateData(requestEntity, format));
     }
 }

@@ -15,12 +15,8 @@ public class RequestEntityUtils {
         return providersVariable;
     }
 
-    public static DataFormat readFormatString(Object object) throws NoSuchFieldException, IllegalAccessException {
-        Field field = object.getClass().getDeclaredField("format");
-        field.setAccessible(true);
-        String formatString = (String) field.get(object);
-
-        switch (formatString.toLowerCase()) {
+    public static DataFormat readFormatParam(String format) throws NoSuchFieldException {
+        switch (format.toLowerCase()) {
             case "csv":
                 return DataFormat.CSV;
             case "json":

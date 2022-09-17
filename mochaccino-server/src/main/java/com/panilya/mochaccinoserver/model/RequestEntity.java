@@ -12,8 +12,6 @@ public class RequestEntity {
 
     @JsonProperty("providers")
     private final List<String> providers;
-    @JsonProperty("format")
-    private final String format;
     @JsonProperty("limit")
     private final int limit;
     @JsonProperty("separator")
@@ -21,9 +19,8 @@ public class RequestEntity {
     @JsonProperty("header")
     private final boolean header;
 
-    public RequestEntity(List<String> providers, String format, int limit, String separator, boolean header) {
+    public RequestEntity(List<String> providers, int limit, String separator, boolean header) {
         this.providers = providers;
-        this.format = format;
         this.limit = limit;
         this.separator = separator;
         this.header = header;

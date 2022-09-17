@@ -2,7 +2,6 @@ package com.panilya.mochaccinoserver.service;
 
 import com.panilya.mochaccinoserver.model.RequestEntity;
 import com.panilya.mochaccinoserver.utils.RequestEntityUtils;
-import net.datafaker.fileformats.Json;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -27,15 +26,13 @@ public class DataGenerationService {
         this.providerServiceFactory = providerServiceFactory;
     }
 
-    public String generateData(RequestEntity requestEntity) {
+    public String generateData(RequestEntity requestEntity, String requestParamFormat) {
 
         DataFormat format;
         try {
-            format = RequestEntityUtils.readFormatString(requestEntity);
+            format = RequestEntityUtils.readFormatParam(requestParamFormat);
         } catch (NoSuchFieldException e) {
             throw new NoSuchElementException("Format is not specified");
-        } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
         }
 
         ProviderService providerService = providerServiceFactory.createProviderService(format);
