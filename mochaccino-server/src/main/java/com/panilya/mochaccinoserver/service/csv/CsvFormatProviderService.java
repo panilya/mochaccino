@@ -39,7 +39,6 @@ public class CsvFormatProviderService implements ProviderService {
                 .separator(getSeparator(requestEntity))
                 .limit(requestEntity.getLimit())
                 .build().get();
-        System.out.println(csv);
         return csv;
     }
 
