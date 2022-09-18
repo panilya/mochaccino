@@ -46,7 +46,7 @@ public class CsvFormatProviderService implements ProviderService {
         List<Csv.Column> result = new ArrayList<>();
 
         for (String column : columns) {
-            DataProvider provider = DataProvider.of(column);
+            CsvDataProvider provider = CsvDataProvider.of(column);
             result.add(Csv.Column.of(provider.getHeader(), provider.getProvider().apply(faker)));
         }
         return result;

@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public enum JSONDataProvider {
+public enum JsonDataProvider {
     FIRST_NAME("firstName", jsonProvider -> jsonProvider.getName().firstName()),
     LAST_NAME("lastName", jsonProvider -> jsonProvider.getName().lastName()),
     ADDRESS("address", jsonProvider -> jsonProvider.getAddress().fullAddress()),
@@ -16,17 +16,17 @@ public enum JSONDataProvider {
     ZIP_CODE("zipCode", jsonProvider -> jsonProvider.getAddress().zipCode());
 
     private final String name;
-    private final Function<JSONFormatPOJO, Object> provider;
+    private final Function<JsonFormatPOJO, Object> provider;
 
-    JSONDataProvider(String name, Function<JSONFormatPOJO, Object> provider) {
+    JsonDataProvider(String name, Function<JsonFormatPOJO, Object> provider) {
         this.name = name;
         this.provider = provider;
     }
 
-    private static final Map<String, JSONDataProvider> JSON_PROVIDER_MAP = Collections.unmodifiableMap(
+    private static final Map<String, JsonDataProvider> JSON_PROVIDER_MAP = Collections.unmodifiableMap(
             Arrays.stream(values()).collect(Collectors.toMap(t -> t.name, Function.identity())));
 
-    public static JSONDataProvider of(String name) {
+    public static JsonDataProvider of(String name) {
         return JSON_PROVIDER_MAP.get(name);
     }
 
@@ -34,7 +34,7 @@ public enum JSONDataProvider {
         return name;
     }
 
-    public Function<JSONFormatPOJO, Object> getProvider() {
+    public Function<JsonFormatPOJO, Object> getProvider() {
         return provider;
     }
 }

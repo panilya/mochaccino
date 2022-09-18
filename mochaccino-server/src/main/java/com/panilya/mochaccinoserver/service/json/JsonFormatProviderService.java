@@ -33,14 +33,14 @@ public class JsonFormatProviderService implements ProviderService {
             values = Collections.emptyList();
         }
 
-        Json.JsonFromCollectionBuilder<JSONFormatPOJO> json = Format.toJson(
-                        faker.collection(() -> JSONFormatPOJO.builder()
+        Json.JsonFromCollectionBuilder<JsonFormatPOJO> json = Format.toJson(
+                        faker.collection(() -> JsonFormatPOJO.builder()
                                 .name(faker.name())
                                 .address(faker.address())
                                 .build()).len(requestEntity.getLimit()).build());
 
         for (String column : values) {
-            json.set(JSONDataProvider.of(column).getName(), JSONDataProvider.of(column).getProvider());
+            json.set(JsonDataProvider.of(column).getName(), JsonDataProvider.of(column).getProvider());
         }
 
         return json.build().generate();

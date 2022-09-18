@@ -9,7 +9,7 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
-public enum DataProvider {
+public enum CsvDataProvider {
     FIRST_NAME("firstName", () -> "first_name", faker -> () -> faker.name().firstName()),
     LAST_NAME("lastName", () -> "last_name", faker -> () -> faker.name().lastName()),
     ADDRESS("address", () -> "address", faker -> () -> faker.address().fullAddress()),
@@ -22,16 +22,16 @@ public enum DataProvider {
     private final Supplier<String> header;
     private final Function<Faker, Supplier<String>> provider;
 
-    DataProvider(String name, Supplier<String> header, Function<Faker, Supplier<String>> provider) {
+    CsvDataProvider(String name, Supplier<String> header, Function<Faker, Supplier<String>> provider) {
         this.name = name;
         this.header = header;
         this.provider = provider;
     }
 
-    private static final Map<String, DataProvider> CSV_PROVIDER_MAP = Collections.unmodifiableMap(
+    private static final Map<String, CsvDataProvider> CSV_PROVIDER_MAP = Collections.unmodifiableMap(
             Arrays.stream(values()).collect(Collectors.toMap(t -> t.name, Function.identity())));
 
-    public static DataProvider of(String name) {
+    public static CsvDataProvider of(String name) {
         return CSV_PROVIDER_MAP.get(name);
     }
 
