@@ -14,9 +14,25 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler({NoSuchFieldException.class, NoSuchElementException.class})
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
-    public ResponseEntity<Object> handleAllNoSuchFieldAndElementException(RuntimeException exception){
+    public ResponseEntity<Object> handleAllNoSuchFieldAndElementException(RuntimeException exception) {
         return ResponseEntity
                 .status(HttpStatus.UNPROCESSABLE_ENTITY)
+                .body(exception.getMessage());
+    }
+
+    @ExceptionHandler(NotImplementedException.class)
+    @ResponseStatus(HttpStatus.NOT_IMPLEMENTED)
+    public ResponseEntity<Object> handleNotImplementedException(RuntimeException exception) {
+        return ResponseEntity
+                .status(HttpStatus.NOT_IMPLEMENTED)
+                .body(exception.getMessage());
+    }
+
+    @ExceptionHandler(IncorrectFormatException.class)
+    @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
+    public ResponseEntity<Object> handleIncorrectFormatException(RuntimeException exception) {
+        return ResponseEntity
+                .status(HttpStatus.NOT_ACCEPTABLE)
                 .body(exception.getMessage());
     }
 }
