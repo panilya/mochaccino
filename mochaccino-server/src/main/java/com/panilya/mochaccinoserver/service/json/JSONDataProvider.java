@@ -12,6 +12,7 @@ public enum JSONDataProvider {
     ADDRESS("address", jsonProvider -> jsonProvider.getAddress().fullAddress()),
     COUNTRY("country", jsonProvider -> jsonProvider.getAddress().country()),
     CITY("city", jsonProvider -> jsonProvider.getAddress().city()),
+    STREET_ADDRESS("streetAddress", jsonProvider -> jsonProvider.getAddress().streetAddress()),
     ZIP_CODE("zipCode", jsonProvider -> jsonProvider.getAddress().zipCode());
 
     private final String name;

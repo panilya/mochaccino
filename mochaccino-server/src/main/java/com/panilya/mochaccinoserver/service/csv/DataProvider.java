@@ -15,6 +15,7 @@ public enum DataProvider {
     ADDRESS("address", () -> "address", faker -> () -> faker.address().fullAddress()),
     COUNTRY("country", () -> "country", faker -> () -> faker.address().country()),
     CITY("city", () -> "city", faker -> () -> faker.address().city()),
+    STREET_ADDRESS("streetAddress", () -> "street_address", faker -> () -> faker.address().streetAddress()),
     ZIP_CODE("zipCode", () -> "zip_code", faker -> () -> faker.address().zipCode());
 
     private final String name;
