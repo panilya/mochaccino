@@ -1,5 +1,6 @@
 package com.panilya.mochaccinoserver.service.file.json;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.panilya.mochaccinoserver.model.RequestEntity;
 import com.panilya.mochaccinoserver.service.ProviderService;
 import com.panilya.mochaccinoserver.service.file.FileProviderService;
@@ -25,12 +26,17 @@ public class JsonAsFileDataProviderService implements FileProviderService {
     @Override
     public byte[] getDataAsFile(RequestEntity requestEntity) throws IOException {
         String provideData = providerService.provideData(requestEntity);
-
+        System.out.println(provideData);
         Path tempDataFile = Files.createTempFile("MOCK_DATA", FILE_SUFFIX);
-        Path writtenFile = Files.writeString(tempDataFile.toAbsolutePath(), provideData);
-        byte[] bytes = Files.readAllBytes(writtenFile);
+        ObjectMapper mapper = new ObjectMapper();
+
+        try {
+            mapper.writeValue(tempDataFile.toFile(), provideData);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        byte[] bytes = Files.readAllBytes(tempDataFile);
         Files.delete(tempDataFile);
         return bytes;
     }
-
 }
