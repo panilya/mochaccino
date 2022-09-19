@@ -1,4 +1,4 @@
-package com.panilya.mochaccinoserver.service.csv;
+package com.panilya.mochaccinoserver.service.text.csv;
 
 import com.panilya.mochaccinoserver.model.RequestEntity;
 import com.panilya.mochaccinoserver.service.ProviderService;

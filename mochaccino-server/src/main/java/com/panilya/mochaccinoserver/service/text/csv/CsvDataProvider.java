@@ -1,4 +1,4 @@
-package com.panilya.mochaccinoserver.service.csv;
+package com.panilya.mochaccinoserver.service.text.csv;
 
 import net.datafaker.Faker;
 
