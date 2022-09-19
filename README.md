@@ -8,6 +8,10 @@ A Web Service that generates mock data for any use cases.
 - Fast
 - Simple to use
 
+## Main features:
+- A wide range of random data
+- Option to get data as a file
+
 ## Supported formats:
 - JSON
 - CSV
