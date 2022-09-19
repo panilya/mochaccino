@@ -1,4 +1,4 @@
-package com.panilya.mochaccinoserver.service.json;
+package com.panilya.mochaccinoserver.service.text.json;
 
 import com.panilya.mochaccinoserver.model.RequestEntity;
 import com.panilya.mochaccinoserver.service.ProviderService;
