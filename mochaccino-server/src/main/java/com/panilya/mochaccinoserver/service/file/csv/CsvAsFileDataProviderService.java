@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 @Service
 public class CsvAsFileDataProviderService implements FileProviderService {
@@ -20,7 +21,10 @@ public class CsvAsFileDataProviderService implements FileProviderService {
     }
 
     @Override
-    public byte[] getDataAsFile(RequestEntity requestEntity) throws IOException {
-        return new byte[0]; //TODO
+    public byte[] getDataAsFile(RequestEntity requestEntity) {
+        String providedData = providerService.provideData(requestEntity);
+        byte[] providedDataBytes = providedData.getBytes(StandardCharsets.UTF_8);
+
+        return providedDataBytes;
     }
 }

@@ -26,7 +26,6 @@ public class JsonAsFileDataProviderService implements FileProviderService {
     @Override
     public byte[] getDataAsFile(RequestEntity requestEntity) throws IOException {
         String provideData = providerService.provideData(requestEntity);
-        System.out.println(provideData);
         Path tempDataFile = Files.createTempFile("MOCK_DATA", FILE_SUFFIX);
         ObjectMapper mapper = new ObjectMapper();
 

@@ -32,8 +32,8 @@ public class DataGenerationController {
         MediaType applicationOctetStream = MediaType.APPLICATION_OCTET_STREAM;
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add(HttpHeaders.ACCESS_CONTROL_EXPOSE_HEADERS, "Content-Disposition");
-        httpHeaders.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + "MOCK_DATA" + format + "\"");
-
+        httpHeaders.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + "MOCK_DATA." + format + "\"");
+        httpHeaders.add("Data-Fileformat", "."+format);
         byte[] dataInFile = fileDataGenerationService.generateDataInFile(requestEntity, format);
         return ResponseEntity.ok()
                 .headers(httpHeaders)
