@@ -13,18 +13,15 @@ import java.util.NoSuchElementException;
 @Service
 public class DataGenerationService {
 
-    private final ProviderService dataProviderService;
     private final FormatProviderServiceFactory providerServiceFactory;
 
     /**
      * By default, use csv format generation
      *
-     * @param dataProviderService
      * @param providerServiceFactory
      */
     @Autowired
-    public DataGenerationService(@Qualifier("csvFormatProviderService") ProviderService dataProviderService, FormatProviderServiceFactory providerServiceFactory) {
-        this.dataProviderService = dataProviderService;
+    public DataGenerationService(FormatProviderServiceFactory providerServiceFactory) {
         this.providerServiceFactory = providerServiceFactory;
     }
 
