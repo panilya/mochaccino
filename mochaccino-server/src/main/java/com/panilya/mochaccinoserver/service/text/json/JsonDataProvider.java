@@ -13,7 +13,8 @@ public enum JsonDataProvider {
     COUNTRY("country", jsonProvider -> jsonProvider.getAddress().country()),
     CITY("city", jsonProvider -> jsonProvider.getAddress().city()),
     STREET_ADDRESS("streetAddress", jsonProvider -> jsonProvider.getAddress().streetAddress()),
-    ZIP_CODE("zipCode", jsonProvider -> jsonProvider.getAddress().zipCode());
+    ZIP_CODE("zipCode", jsonProvider -> jsonProvider.getAddress().zipCode()),
+    TIME_ZONE("timeZone", jsonProvider -> jsonProvider.getAddress().timeZone());
 
     private final String name;
     private final Function<JsonFormatPOJO, Object> provider;

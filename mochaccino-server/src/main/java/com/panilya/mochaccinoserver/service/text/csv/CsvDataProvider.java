@@ -16,7 +16,8 @@ public enum CsvDataProvider {
     COUNTRY("country", () -> "country", faker -> () -> faker.address().country()),
     CITY("city", () -> "city", faker -> () -> faker.address().city()),
     STREET_ADDRESS("streetAddress", () -> "street_address", faker -> () -> faker.address().streetAddress()),
-    ZIP_CODE("zipCode", () -> "zip_code", faker -> () -> faker.address().zipCode());
+    ZIP_CODE("zipCode", () -> "zip_code", faker -> () -> faker.address().zipCode()),
+    TIME_ZONE("timeZone", () -> "time_zone", faker -> () -> faker.address().timeZone());
 
     private final String name;
     private final Supplier<String> header;
