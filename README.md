@@ -21,7 +21,9 @@ A Web Service that generates mock data for any use cases.
 
 - First name
 - Last name
+- Full name
 - Address
 - Country
 - City
 - Zip code
+- Time Zone

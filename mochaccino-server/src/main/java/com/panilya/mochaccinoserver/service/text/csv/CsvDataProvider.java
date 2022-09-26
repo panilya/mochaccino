@@ -10,6 +10,7 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 public enum CsvDataProvider {
+    FULL_NAME("fullName", () -> "full_name", faker -> () -> faker.name().fullName()),
     FIRST_NAME("firstName", () -> "first_name", faker -> () -> faker.name().firstName()),
     LAST_NAME("lastName", () -> "last_name", faker -> () -> faker.name().lastName()),
     ADDRESS("address", () -> "address", faker -> () -> faker.address().fullAddress()),

@@ -7,6 +7,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public enum JsonDataProvider {
+    FULL_NAME("fullName", jsonProvider -> jsonProvider.getName().fullName()),
     FIRST_NAME("firstName", jsonProvider -> jsonProvider.getName().firstName()),
     LAST_NAME("lastName", jsonProvider -> jsonProvider.getName().lastName()),
     ADDRESS("address", jsonProvider -> jsonProvider.getAddress().fullAddress()),
