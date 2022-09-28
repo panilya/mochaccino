@@ -15,7 +15,10 @@ public enum JsonDataProvider {
     CITY("city", jsonProvider -> jsonProvider.getAddress().city()),
     STREET_ADDRESS("streetAddress", jsonProvider -> jsonProvider.getAddress().streetAddress()),
     ZIP_CODE("zipCode", jsonProvider -> jsonProvider.getAddress().zipCode()),
-    TIME_ZONE("timeZone", jsonProvider -> jsonProvider.getAddress().timeZone());
+    TIME_ZONE("timeZone", jsonProvider -> jsonProvider.getAddress().timeZone()),
+    CREDIT_CARD_NUMBER("creditCardNumber", jsonProvider -> jsonProvider.getBusiness().creditCardNumber()),
+    CREDIT_CARD_TYPE("creditCardType", jsonProvider -> jsonProvider.getBusiness().creditCardType()),
+    CREDIT_CARD_EXPIRE("creditCardExpire", jsonProvider -> jsonProvider.getBusiness().creditCardExpiry());
 
     private final String name;
     private final Function<JsonFormatPOJO, Object> provider;

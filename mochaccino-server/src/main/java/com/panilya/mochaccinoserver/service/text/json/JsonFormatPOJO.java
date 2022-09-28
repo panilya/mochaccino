@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
 import net.datafaker.Address;
+import net.datafaker.Business;
 import net.datafaker.Faker;
 import net.datafaker.Name;
 
@@ -14,11 +15,13 @@ public class JsonFormatPOJO {
 
     private final Name name;
     private final Address address;
+    private final Business business;
     private final Faker faker;
 
-    public JsonFormatPOJO(Name name, Address address, Faker faker) {
+    public JsonFormatPOJO(Name name, Address address, Business business, Faker faker) {
         this.name = name;
         this.address = address;
+        this.business = business;
         this.faker = faker;
     }
 }
