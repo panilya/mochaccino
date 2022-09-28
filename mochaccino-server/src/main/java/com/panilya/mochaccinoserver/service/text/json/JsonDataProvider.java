@@ -7,15 +7,20 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public enum JsonDataProvider {
+    // Name
     FULL_NAME("fullName", jsonProvider -> jsonProvider.getName().fullName()),
     FIRST_NAME("firstName", jsonProvider -> jsonProvider.getName().firstName()),
     LAST_NAME("lastName", jsonProvider -> jsonProvider.getName().lastName()),
+
+    // Address
     ADDRESS("address", jsonProvider -> jsonProvider.getAddress().fullAddress()),
     COUNTRY("country", jsonProvider -> jsonProvider.getAddress().country()),
     CITY("city", jsonProvider -> jsonProvider.getAddress().city()),
     STREET_ADDRESS("streetAddress", jsonProvider -> jsonProvider.getAddress().streetAddress()),
     ZIP_CODE("zipCode", jsonProvider -> jsonProvider.getAddress().zipCode()),
     TIME_ZONE("timeZone", jsonProvider -> jsonProvider.getAddress().timeZone()),
+
+    // Credit card
     CREDIT_CARD_NUMBER("creditCardNumber", jsonProvider -> jsonProvider.getBusiness().creditCardNumber()),
     CREDIT_CARD_TYPE("creditCardType", jsonProvider -> jsonProvider.getBusiness().creditCardType()),
     CREDIT_CARD_EXPIRE("creditCardExpire", jsonProvider -> jsonProvider.getBusiness().creditCardExpiry());
