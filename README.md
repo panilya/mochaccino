@@ -19,19 +19,21 @@ A Web Service that generates mock data for any use cases.
 
 ## Data providers:
 
-- First name
-- Last name
-- Full name
-- Address
-- Country
-- City
-- Zip code
-- Time Zone
-- Credit Card Number
-- Credit Card Type
-- Credit Card Expire
-- Commerce Department
-- Commerce Vendor
-- Commerce Product Name
-- Commerce Brand
-- Commerce Material
+| Provider Name          | Example                                  | Category |
+|------------------------|------------------------------------------|----------|
+| First Name             | Freddy                                   | Name     |
+| Last Name              | Doyle                                    | Name     |
+| Full Name              | Bennie Howell                            | Name     |
+| Address                | 2337 Mraz Drives, Stantonfort, FL 87105  | Address  |
+| Country                | Australia                                | Address  |
+| City                   | Grahamtown                               | Address  |
+| Zip Code               | 85656                                    | Address  |
+| Time Zone              | Europe/Kyiv                              | Address  |
+| Credit Card Number     | 1234-2121-1221-1211                      | Business |
+| Credit Card Type       | american_express                         | Business |
+| Credit Card Expire     | 2022-11-11                               | Business |
+| Commerce Department    | Garden                                   | Commerce |
+| Commerce Vendor        | Walmart                                  | Commerce |
+| Commerce Product Name  | Small Cotton Hat                         | Commerce |
+| Commerce Brand         | Dell                                     | Commerce |
+| Commerce Material      | Bronze                                   | Commerce |
