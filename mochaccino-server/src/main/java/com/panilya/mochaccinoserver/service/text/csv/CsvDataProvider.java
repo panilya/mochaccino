@@ -26,7 +26,14 @@ public enum CsvDataProvider {
     //Credit card
     CREDIT_CARD_NUMBER("creditCardNumber", () -> "credit_card_number", faker -> () -> faker.business().creditCardNumber()),
     CREDIT_CARD_TYPE("creditCardType", () -> "credit_card_type", faker -> () -> faker.business().creditCardType()),
-    CREDIT_CARD_EXPIRE("creditCardExpire", () -> "credit_card_expire", faker -> () -> faker.business().creditCardExpiry());
+    CREDIT_CARD_EXPIRE("creditCardExpire", () -> "credit_card_expire", faker -> () -> faker.business().creditCardExpiry()),
+
+    // Commerce
+    COMMERCE_DEPARTMENT("commerceDepartment", () -> "commerce_department", faker -> () -> faker.commerce().department()),
+    COMMERCE_VENDOR("commerceVendor", () -> "commerce_vendor", faker -> () -> faker.commerce().vendor()),
+    COMMERCE_PRODUCT_NAME("productName", () -> "product_name", faker -> () -> faker.commerce().productName()),
+    COMMERCE_BRAND("commerceBrand", () -> "brand", faker -> () -> faker.commerce().brand()),
+    COMMERCE_MATERIAL("commerceMaterial", () -> "material", faker -> () -> faker.commerce().material());
 
     private final String name;
     private final Supplier<String> header;

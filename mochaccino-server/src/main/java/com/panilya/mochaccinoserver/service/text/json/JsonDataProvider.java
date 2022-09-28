@@ -23,7 +23,14 @@ public enum JsonDataProvider {
     // Credit card
     CREDIT_CARD_NUMBER("creditCardNumber", jsonProvider -> jsonProvider.getBusiness().creditCardNumber()),
     CREDIT_CARD_TYPE("creditCardType", jsonProvider -> jsonProvider.getBusiness().creditCardType()),
-    CREDIT_CARD_EXPIRE("creditCardExpire", jsonProvider -> jsonProvider.getBusiness().creditCardExpiry());
+    CREDIT_CARD_EXPIRE("creditCardExpire", jsonProvider -> jsonProvider.getBusiness().creditCardExpiry()),
+
+    // Commerce
+    COMMERCE_DEPARTMENT("commerceDepartment", jsonProvider -> jsonProvider.getCommerce().department()),
+    COMMERCE_VENDOR("commerceVendor", jsonProvider -> jsonProvider.getCommerce().vendor()),
+    COMMERCE_PRODUCT_NAME("productName", jsonProvider -> jsonProvider.getCommerce().productName()),
+    COMMERCE_BRAND("commerceBrand", jsonProvider -> jsonProvider.getCommerce().brand()),
+    COMMERCE_MATERIAL("commerceMaterial", jsonProvider -> jsonProvider.getCommerce().material());
 
     private final String name;
     private final Function<JsonFormatPOJO, Object> provider;
