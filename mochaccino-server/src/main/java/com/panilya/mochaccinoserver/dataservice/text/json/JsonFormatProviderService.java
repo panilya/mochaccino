@@ -39,6 +39,7 @@ public class JsonFormatProviderService implements ProviderService {
                                 .address(faker.address())
                                 .business(faker.business())
                                 .commerce(faker.commerce())
+                                .internet(faker.internet())
                                 .build()).len(requestEntity.getLimit()).build());
 
         for (String column : values) {

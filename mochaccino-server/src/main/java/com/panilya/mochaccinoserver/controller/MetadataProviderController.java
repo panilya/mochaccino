@@ -1,11 +1,9 @@
 package com.panilya.mochaccinoserver.controller;
 
-import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.panilya.mochaccinoserver.infoservice.InfoService;
 import com.panilya.mochaccinoserver.model.GroupInfoEntity;
-import org.springframework.expression.spel.InternalParseException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

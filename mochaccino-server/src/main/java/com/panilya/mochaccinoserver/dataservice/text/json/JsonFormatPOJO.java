@@ -14,13 +14,15 @@ public class JsonFormatPOJO {
     private final Address address;
     private final Business business;
     private final Commerce commerce;
+    private final Internet internet;
     private final Faker faker;
 
-    public JsonFormatPOJO(Name name, Address address, Business business, Commerce commerce, Faker faker) {
+    public JsonFormatPOJO(Name name, Address address, Business business, Commerce commerce, Internet internet, Faker faker) {
         this.name = name;
         this.address = address;
         this.business = business;
         this.commerce = commerce;
+        this.internet = internet;
         this.faker = faker;
     }
 }
