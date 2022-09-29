@@ -1,7 +1,7 @@
-package com.panilya.mochaccinoserver.service.text.json;
+package com.panilya.mochaccinoserver.dataservice.text.json;
 
 import com.panilya.mochaccinoserver.model.RequestEntity;
-import com.panilya.mochaccinoserver.service.ProviderService;
+import com.panilya.mochaccinoserver.dataservice.ProviderService;
 import com.panilya.mochaccinoserver.utils.RequestEntityUtils;
 import net.datafaker.Faker;
 import net.datafaker.fileformats.Format;

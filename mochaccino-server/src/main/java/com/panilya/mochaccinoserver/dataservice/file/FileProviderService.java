@@ -1,4 +1,4 @@
-package com.panilya.mochaccinoserver.service.file;
+package com.panilya.mochaccinoserver.dataservice.file;
 
 import com.panilya.mochaccinoserver.model.RequestEntity;
 

@@ -1,4 +1,4 @@
-package com.panilya.mochaccinoserver.service;
+package com.panilya.mochaccinoserver.dataservice;
 
 public enum DataFormat {
     CSV,

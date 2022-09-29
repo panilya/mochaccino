@@ -1,9 +1,9 @@
-package com.panilya.mochaccinoserver.service.text;
+package com.panilya.mochaccinoserver.dataservice.text;
 
-import com.panilya.mochaccinoserver.service.DataFormat;
-import com.panilya.mochaccinoserver.service.ProviderService;
-import com.panilya.mochaccinoserver.service.text.csv.CsvFormatProviderService;
-import com.panilya.mochaccinoserver.service.text.json.JsonFormatProviderService;
+import com.panilya.mochaccinoserver.dataservice.DataFormat;
+import com.panilya.mochaccinoserver.dataservice.ProviderService;
+import com.panilya.mochaccinoserver.dataservice.text.csv.CsvFormatProviderService;
+import com.panilya.mochaccinoserver.dataservice.text.json.JsonFormatProviderService;
 import net.datafaker.Faker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

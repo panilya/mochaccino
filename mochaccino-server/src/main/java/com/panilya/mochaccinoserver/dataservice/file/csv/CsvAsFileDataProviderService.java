@@ -1,8 +1,8 @@
-package com.panilya.mochaccinoserver.service.file.csv;
+package com.panilya.mochaccinoserver.dataservice.file.csv;
 
 import com.panilya.mochaccinoserver.model.RequestEntity;
-import com.panilya.mochaccinoserver.service.ProviderService;
-import com.panilya.mochaccinoserver.service.file.FileProviderService;
+import com.panilya.mochaccinoserver.dataservice.ProviderService;
+import com.panilya.mochaccinoserver.dataservice.file.FileProviderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;

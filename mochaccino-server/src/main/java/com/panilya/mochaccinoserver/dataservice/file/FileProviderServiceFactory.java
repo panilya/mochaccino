@@ -1,10 +1,10 @@
-package com.panilya.mochaccinoserver.service.file;
+package com.panilya.mochaccinoserver.dataservice.file;
 
-import com.panilya.mochaccinoserver.service.DataFormat;
-import com.panilya.mochaccinoserver.service.file.csv.CsvAsFileDataProviderService;
-import com.panilya.mochaccinoserver.service.file.json.JsonAsFileDataProviderService;
-import com.panilya.mochaccinoserver.service.text.csv.CsvFormatProviderService;
-import com.panilya.mochaccinoserver.service.text.json.JsonFormatProviderService;
+import com.panilya.mochaccinoserver.dataservice.DataFormat;
+import com.panilya.mochaccinoserver.dataservice.file.csv.CsvAsFileDataProviderService;
+import com.panilya.mochaccinoserver.dataservice.file.json.JsonAsFileDataProviderService;
+import com.panilya.mochaccinoserver.dataservice.text.csv.CsvFormatProviderService;
+import com.panilya.mochaccinoserver.dataservice.text.json.JsonFormatProviderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

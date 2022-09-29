@@ -1,4 +1,4 @@
-package com.panilya.mochaccinoserver.service.text.json;
+package com.panilya.mochaccinoserver.dataservice.text.json;
 
 import lombok.Builder;
 import lombok.Getter;

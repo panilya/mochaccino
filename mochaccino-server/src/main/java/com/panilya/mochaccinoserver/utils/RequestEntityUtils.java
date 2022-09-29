@@ -2,7 +2,7 @@ package com.panilya.mochaccinoserver.utils;
 
 import com.panilya.mochaccinoserver.exception.IncorrectFormatException;
 import com.panilya.mochaccinoserver.exception.NotImplementedException;
-import com.panilya.mochaccinoserver.service.DataFormat;
+import com.panilya.mochaccinoserver.dataservice.DataFormat;
 
 import java.lang.reflect.Field;
 import java.util.List;

@@ -1,8 +1,8 @@
 package com.panilya.mochaccinoserver.controller;
 
 import com.panilya.mochaccinoserver.model.RequestEntity;
-import com.panilya.mochaccinoserver.service.file.FileDataGenerationService;
-import com.panilya.mochaccinoserver.service.text.DataGenerationService;
+import com.panilya.mochaccinoserver.dataservice.file.FileDataGenerationService;
+import com.panilya.mochaccinoserver.dataservice.text.DataGenerationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;

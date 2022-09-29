@@ -1,7 +1,7 @@
-package com.panilya.mochaccinoserver.service.file;
+package com.panilya.mochaccinoserver.dataservice.file;
 
 import com.panilya.mochaccinoserver.model.RequestEntity;
-import com.panilya.mochaccinoserver.service.DataFormat;
+import com.panilya.mochaccinoserver.dataservice.DataFormat;
 import com.panilya.mochaccinoserver.utils.RequestEntityUtils;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
