@@ -1,7 +1,13 @@
 export interface DataTypes {
-  person: Person;
+  fakeData: IFakeData[];
 }
-export interface Person {
-  value: string[];
+export interface IFakeData {
+  value: IOption[];
   description: string;
+  name: string;
+  id: number;
+}
+export interface IOption {
+  option: string;
+  example: string;
 }
