@@ -1,0 +1,11 @@
+.categories-list,
+.fake-data-list {
+  overflow-y: scroll;
+  height: fit-content;
+  max-height: 70vh;
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+}
