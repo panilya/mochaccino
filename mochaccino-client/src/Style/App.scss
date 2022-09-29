@@ -18,5 +18,17 @@ p {
   font-family: "Source Code Pro", monospace;
 }
 
-// font-family: 'Source Code Pro', monospace; 200 400 700
+::-webkit-scrollbar-track {
+  background-color: #f5f5f5;
+}
 
+::-webkit-scrollbar {
+  width: 5px;
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #000000;
+}
+
+// font-family: 'Source Code Pro', monospace; 200 400 700

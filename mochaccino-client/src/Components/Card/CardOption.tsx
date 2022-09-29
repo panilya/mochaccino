@@ -20,7 +20,7 @@ const CardOption: React.FC<CardOptionProps> = ({ data }) => {
       <Card.Body>
         <Card.Title>{data.option}</Card.Title>
         <Card.Text style={{ opacity: "0.5" }}>
-          Example: {data.example}
+          Example: "{data.example}"
         </Card.Text>
       </Card.Body>
     </Card>

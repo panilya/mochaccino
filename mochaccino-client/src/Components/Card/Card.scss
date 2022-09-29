@@ -6,4 +6,12 @@
 .card:hover {
   transform: scale(1.02);
 }
-
+.card__body {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.card__body-span {
+  margin-left: auto;
+  opacity: 0.5;
+}

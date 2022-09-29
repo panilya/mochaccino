@@ -3,6 +3,8 @@ import Modal from "react-bootstrap/Modal";
 import "./Modal.css";
 import { useNavigate, useParams } from "react-router-dom";
 import ModalButtons from "./ModalButtons";
+import { useAppSelector, useGetOptions } from "../../Redux/Hooks/useRedux";
+import { Badge } from "react-bootstrap";
 
 interface ModalComponentProps {
   children: React.ReactNode;
@@ -11,6 +13,7 @@ interface ModalComponentProps {
 const ModalComponent: React.FC<ModalComponentProps> = ({ children }) => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const choosedOptionList = useGetOptions();
   return (
     <>
       <Modal
@@ -23,7 +26,16 @@ const ModalComponent: React.FC<ModalComponentProps> = ({ children }) => {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Choose the theme
+            <span className="modal__title-choosed-wrapper">
+              Choosed :
+              <span>
+                {choosedOptionList.map((el) => (
+                  <Badge style={{ margin: "0 .5em" }} bg="light" text="dark">
+                    {el}
+                  </Badge>
+                ))}
+              </span>
+            </span>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>{children}</Modal.Body>

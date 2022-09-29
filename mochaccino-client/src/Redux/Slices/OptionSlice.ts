@@ -23,7 +23,7 @@ export const optionSlice = createSlice({
       state.value.push(action.payload);
     },
     deleteOption: (state, action: PayloadAction<string>) => {
-      state.value.filter((el) => el.option !== action.payload);
+      state.value = state.value.filter((el) => el.option !== action.payload);
     },
   },
 });

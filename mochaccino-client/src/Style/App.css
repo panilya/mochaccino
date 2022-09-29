@@ -16,4 +16,17 @@ h6,
 span,
 p {
   font-family: "Source Code Pro", monospace;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #000000;
 }/*# sourceMappingURL=App.css.map */

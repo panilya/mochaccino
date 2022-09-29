@@ -10,22 +10,16 @@ const ModalButtons: React.FC<ModalButtonsProps> = ({ id }) => {
   return (
     <>
       {id ? (
-        <>
-          <Button>Add</Button>
-          <Button
-            onClick={() => navigate("/categories")}
-            variant="outline-primary"
-          >
-            Back
-          </Button>
-        </>
+        <Button
+          onClick={() => navigate("/categories")}
+          variant="outline-primary"
+        >
+          Back
+        </Button>
       ) : (
-        <>
-          <Button>Add</Button>
-          <Button onClick={() => navigate("/")} variant="outline-primary">
-            Dismiss
-          </Button>
-        </>
+        <Button onClick={() => navigate("/")} variant="outline-primary">
+          Dismiss
+        </Button>
       )}
     </>
   );
