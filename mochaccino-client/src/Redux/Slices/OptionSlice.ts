@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../Store";
-import { IOption } from "../../Service/Interfaces";
+import { IProvider } from "../../Service/Interfaces";
 
 // Define a type for the slice state
 interface OptionState {
-  value: IOption[];
+  value: IProvider[];
 }
 
 // Define the initial state using that type
@@ -19,11 +19,11 @@ export const optionSlice = createSlice({
   initialState,
   reducers: {
     // Use the PayloadAction type to declare the contents of `action.payload`
-    addOption: (state, action: PayloadAction<IOption>) => {
+    addOption: (state, action: PayloadAction<IProvider>) => {
       state.value.push(action.payload);
     },
     deleteOption: (state, action: PayloadAction<string>) => {
-      state.value = state.value.filter((el) => el.option !== action.payload);
+      state.value = state.value.filter((el) => el.provider !== action.payload);
     },
   },
 });

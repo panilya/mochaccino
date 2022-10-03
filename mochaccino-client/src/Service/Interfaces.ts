@@ -2,12 +2,12 @@ export interface DataTypes {
   fakeData: IFakeData[];
 }
 export interface IFakeData {
-  value: IOption[];
+  providers: IProvider[];
   description: string;
   name: string;
   id: number;
 }
-export interface IOption {
-  option: string;
+export interface IProvider {
+  provider: string;
   example: string;
 }

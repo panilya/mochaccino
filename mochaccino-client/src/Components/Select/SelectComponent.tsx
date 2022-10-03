@@ -11,9 +11,7 @@ const SelectComponent: React.FC<SelectComponentProps> = (props) => {
   };
   return (
     <>
-      <Form.Label htmlFor="inputPassword5">
-        Choose the recieved file type:
-      </Form.Label>
+      <Form.Label htmlFor="inputPassword5">Choose file type:</Form.Label>
       <Form.Select
         className="select"
         value={props.value}

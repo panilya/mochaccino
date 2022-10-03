@@ -1,5 +1,7 @@
+import { Spinner } from "react-bootstrap";
+
 import { useNavigate, useParams } from "react-router-dom";
-import { dataTypes } from "../../Service/DataTypes";
+import { useGetGroupsQuery } from "../../Redux/Slices/GroupsQuery";
 import CardOption from "../Card/CardOption";
 
 interface FakeDataListProps {}
@@ -7,10 +9,14 @@ interface FakeDataListProps {}
 const FakeDataList: React.FC<FakeDataListProps> = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const list = dataTypes.fakeData.find((el) => el.id === Number(id));
+  const { data, isLoading } = useGetGroupsQuery("");
+  const list = data && data.find((el) => el.id === Number(id));
+
   return (
     <div className="fake-data-list">
-      {list && list.value.map((el) => <CardOption data={el} />)}
+      {isLoading && <Spinner animation={"border"} />}
+      {list &&
+        list.providers.map((el, id) => <CardOption key={id} data={el} />)}
     </div>
   );
 };

@@ -1,3 +1,13 @@
+@keyframes slide {
+  0% {
+    margin-bottom: 20em;
+    opacity: 0.6;
+  }
+  100% {
+    margin-bottom: 0;
+  }
+}
+
 .home {
   background: #8f6a52;
   height: 100vh;
@@ -5,8 +15,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 .home__content {
+  animation: slide 1s ease-in-out;
+
   background: #fff;
   border-radius: 20px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.521);
