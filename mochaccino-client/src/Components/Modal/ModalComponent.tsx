@@ -3,8 +3,13 @@ import Modal from "react-bootstrap/Modal";
 import "./Modal.css";
 import { useNavigate, useParams } from "react-router-dom";
 import ModalButtons from "./ModalButtons";
-import { useAppSelector, useGetOptions } from "../../Redux/Hooks/useRedux";
+import {
+  useAppDispatch,
+  useAppSelector,
+  useGetOptions,
+} from "../../Hooks/useRedux";
 import { Badge } from "react-bootstrap";
+import { deleteOption } from "../../Redux/Slices/OptionSlice";
 
 interface ModalComponentProps {
   children: React.ReactNode;
@@ -13,6 +18,7 @@ interface ModalComponentProps {
 const ModalComponent: React.FC<ModalComponentProps> = ({ children }) => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const choosedOptionList = useGetOptions();
   return (
     <>
@@ -29,8 +35,14 @@ const ModalComponent: React.FC<ModalComponentProps> = ({ children }) => {
             <span className="modal__title-choosed-wrapper">
               Choosed :
               <span>
-                {choosedOptionList.map((el) => (
-                  <Badge style={{ margin: "0 .5em" }} bg="light" text="dark">
+                {choosedOptionList.map((el, id) => (
+                  <Badge
+                    onClick={() => dispatch(deleteOption(el))}
+                    key={id}
+                    style={{ margin: "0 .5em", cursor: "pointer" }}
+                    bg="light"
+                    text="dark"
+                  >
                     {el}
                   </Badge>
                 ))}

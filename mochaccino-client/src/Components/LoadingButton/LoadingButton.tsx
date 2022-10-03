@@ -5,11 +5,13 @@ interface LoadingButtonProps {
   outline?: boolean;
   function?: () => void;
   isLoading?: boolean;
+  disabled?: boolean;
 }
 
 const LoadingButton: React.FC<LoadingButtonProps> = (props) => {
   return (
     <Button
+      disabled={props.disabled}
       onClick={props.function}
       variant={props.outline ? "outline-primary" : "primary"}
       className="loading-button"
