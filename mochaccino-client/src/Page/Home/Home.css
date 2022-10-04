@@ -40,8 +40,9 @@
   width: 50%;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: space-around;
+  justify-content: space-between;
   padding: 2em;
+  padding-bottom: 0em;
 }
 
 .home__button-wrapper {
@@ -80,4 +81,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.home__footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid rgba(143, 106, 82, 0.2941176471);
+  width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 1em 0em;
+}
+
+.home__credits {
+  text-align: center;
+  opacity: 0.7;
+  margin: 0;
 }/*# sourceMappingURL=Home.css.map */

@@ -8,6 +8,7 @@ import { useDownloadData } from "../../Hooks/useDownloadData";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Home.css";
 import Form from "react-bootstrap/Form";
+import { Card } from "react-bootstrap";
 
 interface HomeProps {}
 
@@ -82,6 +83,12 @@ const Home: React.FC<HomeProps> = () => {
             </div>
           </div>
         </div>
+        <footer className="home__footer">
+          <p className="home__credits">
+            Powered by{" "}
+            <a href="https://github.com/datafaker-net/datafaker" >Datafaker</a>{" "}
+          </p>
+        </footer>
       </div>
     </div>
   );
