@@ -16,7 +16,6 @@ import java.nio.file.Path;
 public class JsonAsFileDataProviderService implements FileProviderService {
 
     private final ProviderService providerService;
-    private final static String FILE_SUFFIX = ".json";
 
     @Autowired
     public JsonAsFileDataProviderService(@Qualifier("jsonFormatProviderService") ProviderService providerService) {
@@ -24,18 +23,16 @@ public class JsonAsFileDataProviderService implements FileProviderService {
     }
 
     @Override
-    public byte[] getDataAsFile(RequestEntity requestEntity) throws IOException {
+    public byte[] getDataAsFile(RequestEntity requestEntity) {
         String provideData = providerService.provideData(requestEntity);
-        Path tempDataFile = Files.createTempFile("MOCK_DATA", FILE_SUFFIX);
         ObjectMapper mapper = new ObjectMapper();
 
+        byte[] bytes = new byte[0];
         try {
-            mapper.writeValue(tempDataFile.toFile(), provideData);
+            bytes = mapper.writeValueAsBytes(provideData);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        byte[] bytes = Files.readAllBytes(tempDataFile);
-        Files.delete(tempDataFile);
         return bytes;
     }
 }
