@@ -29,8 +29,9 @@
   width: 50%;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: space-around;
+  justify-content: space-between;
   padding: 2em;
+  padding-bottom: 0em;
 }
 .home__button-wrapper {
   margin-top: auto;
@@ -61,4 +62,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.home__footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid #8f6a524b;
+  width: 100%;
+  height: fit-content;
+
+  padding: 1em 0em;
+}
+.home__credits {
+  text-align: center;
+  opacity: 0.7;
+  margin: 0;
 }

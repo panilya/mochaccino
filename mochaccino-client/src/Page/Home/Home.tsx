@@ -82,6 +82,12 @@ const Home: React.FC<HomeProps> = () => {
             </div>
           </div>
         </div>
+        <footer className="home__footer">
+          <p className="home__credits">
+            Powered by{" "}
+            <a href="https://github.com/datafaker-net/datafaker" >Datafaker</a>{" "}
+          </p>
+        </footer>
       </div>
     </div>
   );
