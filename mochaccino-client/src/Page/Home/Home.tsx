@@ -8,7 +8,6 @@ import { useDownloadData } from "../../Hooks/useDownloadData";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Home.css";
 import Form from "react-bootstrap/Form";
-import { Card } from "react-bootstrap";
 
 interface HomeProps {}
 
