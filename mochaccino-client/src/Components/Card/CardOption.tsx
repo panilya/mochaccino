@@ -1,11 +1,12 @@
 import { Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../Redux/Hooks/useRedux";
+import { convertCamel } from "../../Helpers/ConvertCamel";
+import { useAppDispatch } from "../../Hooks/useRedux";
 import { addOption } from "../../Redux/Slices/OptionSlice";
-import { IOption } from "../../Service/Interfaces";
+import { IProvider } from "../../Service/Interfaces";
 import "./Card.css";
 interface CardOptionProps {
-  data: IOption;
+  data: IProvider;
 }
 
 const CardOption: React.FC<CardOptionProps> = ({ data }) => {
@@ -18,7 +19,7 @@ const CardOption: React.FC<CardOptionProps> = ({ data }) => {
       className="card"
     >
       <Card.Body>
-        <Card.Title>{data.option}</Card.Title>
+        <Card.Title>{convertCamel(data.provider)}</Card.Title>
         <Card.Text style={{ opacity: "0.5" }}>
           Example: "{data.example}"
         </Card.Text>

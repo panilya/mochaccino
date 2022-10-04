@@ -1,3 +1,21 @@
+@-webkit-keyframes slide {
+  0% {
+    margin-bottom: 20em;
+    opacity: 0.6;
+  }
+  100% {
+    margin-bottom: 0;
+  }
+}
+@keyframes slide {
+  0% {
+    margin-bottom: 20em;
+    opacity: 0.6;
+  }
+  100% {
+    margin-bottom: 0;
+  }
+}
 .home {
   background: #8f6a52;
   height: 100vh;
@@ -5,9 +23,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .home__content {
+  -webkit-animation: slide 1s ease-in-out;
+          animation: slide 1s ease-in-out;
   background: #fff;
   border-radius: 20px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.521);
@@ -19,8 +40,9 @@
   width: 50%;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: space-around;
+  justify-content: space-between;
   padding: 2em;
+  padding-bottom: 0em;
 }
 
 .home__button-wrapper {
@@ -59,4 +81,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.home__footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid rgba(143, 106, 82, 0.2941176471);
+  width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 1em 0em;
+}
+
+.home__credits {
+  text-align: center;
+  opacity: 0.7;
+  margin: 0;
 }/*# sourceMappingURL=Home.css.map */

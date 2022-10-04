@@ -1,57 +1,43 @@
-import axios from "axios";
-import { useState } from "react";
 import Header from "../../Components/Header/Header";
 import LoadingButton from "../../Components/LoadingButton/LoadingButton";
 import SelectComponent from "../../Components/Select/SelectComponent";
-
+import OptionTable from "../../Components/List/OptionTable";
+import { Outlet, useNavigate } from "react-router-dom";
+import { useAppSelector } from "../../Hooks/useRedux";
+import { useDownloadData } from "../../Hooks/useDownloadData";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Home.css";
-import { Outlet } from "react-router-dom";
-import { useAppSelector, useGetOptions } from "../../Redux/Hooks/useRedux";
-import OptionTable from "../../Components/List/OptionTable";
+import Form from "react-bootstrap/Form";
 
 interface HomeProps {}
 
 const Home: React.FC<HomeProps> = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [format, setFormat] = useState("csv");
-  const [limit, setLimit] = useState<number>(1000);
-
   const optionList = useAppSelector((state) => state.options.value);
-  const optionProviders = useGetOptions();
+  const navigate = useNavigate();
+  const {
+    limit,
+    setLimit,
+    format,
+    setFormat,
+    isLoading,
+    handleDownloadData,
+    handlePreviewData,
+  } = useDownloadData();
 
-  const handleDownload = () => {
-    let body = {
-      providers: optionProviders,
-      limit: limit,
-    };
-    setIsLoading(true);
-    axios
-      .post(
-        `https://mochaccino-server.herokuapp.com/data/download?format=${format}`,
-        body,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
-      .then((response) => {
-        const contentDispositionHeader =
-          response.headers["content-disposition"];
-        const fileFormat = contentDispositionHeader.split(".")[1].slice(0, -1);
-        const url = window.URL.createObjectURL(new Blob([response.data]));
-        const link = document.createElement("a");
-        link.href = url;
-        const desiredFileFormat = "data." + fileFormat;
-        link.setAttribute("download", desiredFileFormat);
-        document.body.appendChild(link);
-        link.click();
-      })
-      .finally(() => setIsLoading(false))
-      .catch((err) => {
-        console.log(err.status);
-      });
+  const handleLimitChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value.charAt(0) === "-") {
+      return setLimit("1");
+    }
+    if (e.target.value.charAt(0) === "0") {
+      return setLimit(e.target.value.substring(1));
+    }
+    if (Number(e.target.value) > 100000) {
+      return setLimit("100000");
+    }
+    if (Number(e.target.value) < 0) {
+      return setLimit("1");
+    }
+    setLimit(e.target.value);
   };
 
   return (
@@ -67,22 +53,41 @@ const Home: React.FC<HomeProps> = () => {
           </div>
           <div className="home__right-wrapper">
             <div className="home__select-wrapper">
+              <Form.Label>Choose the limit</Form.Label>
+              <Form.Control
+                type="number"
+                onChange={handleLimitChange}
+                value={limit}
+                min="1"
+                pattern="^[+]?\d+([.]\d+)?$"
+                placeholder="Amount goes here..."
+              />
               <SelectComponent value={format} setFormat={setFormat} />
             </div>
             <div className="home__button-wrapper">
               <LoadingButton
-                function={handleDownload}
+                disabled={optionList.length === 0}
+                function={handleDownloadData}
                 isLoading={isLoading}
                 name="Download data"
               />
               <LoadingButton
-                function={() => console.log("hey")}
+                function={() => {
+                  navigate("preview");
+                  handlePreviewData();
+                }}
                 outline={true}
                 name="Preview data"
               />
             </div>
           </div>
         </div>
+        <footer className="home__footer">
+          <p className="home__credits">
+            Powered by{" "}
+            <a href="https://github.com/datafaker-net/datafaker" >Datafaker</a>{" "}
+          </p>
+        </footer>
       </div>
     </div>
   );
