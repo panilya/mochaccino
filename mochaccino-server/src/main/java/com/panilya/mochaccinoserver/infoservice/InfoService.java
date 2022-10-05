@@ -52,12 +52,18 @@ public class InfoService {
             new ProviderInfo("userAgent", "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0")
     );
 
+    private final static List<ProviderInfo> PHONE_NUMBER_PROVIDERS_INFO = List.of(
+            new ProviderInfo("phoneNumber", "1-931-650-5228"),
+            new ProviderInfo("cellPhone", "(973) 415-1746")
+    );
+
     public enum ProviderGroupInfo {
         NAME_GROUP(new GroupInfoEntity(NAME_GROUP_PROVIDERS_INFO, "Name", "A common group", 1L)),
         ADDRESS_GROUP(new GroupInfoEntity(ADDRESS_GROUP_PROVIDERS_INFO, "Address", "Address group", 2L)),
-        BUSINESS_GROUP(new GroupInfoEntity(BUSINESS_GROUP_PROVIDERS_INFO, "Business", "Business group", 3L)),
-        COMMERCE_GROUP(new GroupInfoEntity(COMMERCE_GROUP_PROVIDERS_INFO, "Commerce", "Commerce group", 4L)),
-        INTERNET_GROUP(new GroupInfoEntity(INTERNET_GROUP_PROVIDERS_INFO, "Internet", "Internet group", 5L));
+        PHONE_NUMBER_GROUP(new GroupInfoEntity(PHONE_NUMBER_PROVIDERS_INFO, "Phone Number", "Phone number group", 3L)),
+        BUSINESS_GROUP(new GroupInfoEntity(BUSINESS_GROUP_PROVIDERS_INFO, "Business", "Business group", 4L)),
+        COMMERCE_GROUP(new GroupInfoEntity(COMMERCE_GROUP_PROVIDERS_INFO, "Commerce", "Commerce group", 5L)),
+        INTERNET_GROUP(new GroupInfoEntity(INTERNET_GROUP_PROVIDERS_INFO, "Internet", "Internet group", 6L));
 
         private final GroupInfoEntity groupInfo;
 
