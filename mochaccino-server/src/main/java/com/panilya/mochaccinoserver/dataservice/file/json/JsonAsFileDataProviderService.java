@@ -1,16 +1,14 @@
 package com.panilya.mochaccinoserver.dataservice.file.json;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.panilya.mochaccinoserver.model.RequestEntity;
 import com.panilya.mochaccinoserver.dataservice.ProviderService;
 import com.panilya.mochaccinoserver.dataservice.file.FileProviderService;
+import com.panilya.mochaccinoserver.model.RequestEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 
 @Service
 public class JsonAsFileDataProviderService implements FileProviderService {
