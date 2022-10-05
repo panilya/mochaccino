@@ -47,7 +47,11 @@ public enum CsvDataProvider {
     INTERNET_IP_V6_ADDRESS("ipV6Address", () -> "ip_v6_address", faker -> () -> faker.internet().ipV6Address()),
     INTERNET_UUID_V3("uuidv3", () -> "uuidv3", faker -> () -> faker.internet().uuidv3()),
     INTERNET_UUID("uuid", () -> "uuid", faker -> () -> faker.internet().uuid()),
-    INTERNET_USERAGENT("userAgent", () -> "user_agent", faker -> () -> faker.internet().userAgentAny());
+    INTERNET_USERAGENT("userAgent", () -> "user_agent", faker -> () -> faker.internet().userAgentAny()),
+
+    // Phone Number
+    PHONE_NUMBER("phoneNumber", () -> "phone_number", faker -> () -> faker.phoneNumber().phoneNumber()),
+    CELL_PHONE("cellPhone", () -> "cell_phone", faker -> () -> faker.phoneNumber().cellPhone());
 
     private final String name;
     private final Supplier<String> header;
