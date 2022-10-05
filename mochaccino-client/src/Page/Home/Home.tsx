@@ -14,15 +14,8 @@ interface HomeProps {}
 const Home: React.FC<HomeProps> = () => {
   const optionList = useAppSelector((state) => state.options.value);
   const navigate = useNavigate();
-  const {
-    limit,
-    setLimit,
-    format,
-    setFormat,
-    isLoading,
-    handleDownloadData,
-    handlePreviewData,
-  } = useDownloadData();
+  const { limit, setLimit, format, setFormat, isLoading, handleDownloadData } =
+    useDownloadData();
 
   const handleLimitChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.value.charAt(0) === "-") {
@@ -73,9 +66,9 @@ const Home: React.FC<HomeProps> = () => {
               />
               <LoadingButton
                 function={() => {
-                  navigate("preview");
-                  handlePreviewData();
+                  navigate("preview", { state: { format, limit } });
                 }}
+                disabled={optionList.length === 0}
                 outline={true}
                 name="Preview data"
               />
@@ -85,7 +78,7 @@ const Home: React.FC<HomeProps> = () => {
         <footer className="home__footer">
           <p className="home__credits">
             Powered by{" "}
-            <a href="https://github.com/datafaker-net/datafaker" >Datafaker</a>{" "}
+            <a href="https://github.com/datafaker-net/datafaker">Datafaker</a>{" "}
           </p>
         </footer>
       </div>
