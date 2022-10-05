@@ -4,13 +4,17 @@ import { useGetOptions } from "./useRedux";
 
 export const useDownloadData = () => {
   const [limit, setLimit] = useState<string>("1000");
-  const [isLoading, setIsLoading] = useState(false);
   const [format, setFormat] = useState("csv");
+  const [separator, setSeparator] = useState(",");
+  const [header, setHeader] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const optionProviders = useGetOptions();
 
   const handleDownloadData = () => {
     setIsLoading(true);
     let body = {
+      header: header,
+      separator: separator,
       providers: optionProviders,
       limit: Number(limit),
     };
@@ -42,6 +46,10 @@ export const useDownloadData = () => {
       });
   };
   const store = {
+    header,
+    separator,
+    setHeader,
+    setSeparator,
     isLoading,
     limit,
     format,
@@ -50,6 +58,6 @@ export const useDownloadData = () => {
     setLimit,
     optionProviders,
   };
-  
+
   return store;
 };

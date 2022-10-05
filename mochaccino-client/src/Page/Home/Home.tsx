@@ -8,6 +8,7 @@ import { useDownloadData } from "../../Hooks/useDownloadData";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Home.css";
 import Form from "react-bootstrap/Form";
+import Options from "../../Components/Options";
 
 interface HomeProps {}
 
@@ -51,11 +52,13 @@ const Home: React.FC<HomeProps> = () => {
                 type="number"
                 onChange={handleLimitChange}
                 value={limit}
+                style={{ width: "100%" }}
                 min="1"
                 pattern="^[+]?\d+([.]\d+)?$"
                 placeholder="Amount goes here..."
               />
               <SelectComponent value={format} setFormat={setFormat} />
+              {format === "csv" && <Options />}
             </div>
             <div className="home__button-wrapper">
               <LoadingButton
