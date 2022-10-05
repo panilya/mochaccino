@@ -44,7 +44,11 @@ public enum JsonDataProvider {
     INTERNET_IP_V6_ADDRESS("ipV6Address", jsonProvider -> jsonProvider.getInternet().ipV6Address()),
     INTERNET_UUID_V3("uuidv3", jsonProvider -> jsonProvider.getInternet().uuidv3()),
     INTERNET_UUID("uuid", jsonProvider -> jsonProvider.getInternet().uuid()),
-    INTERNET_USERAGENT("userAgent", jsonProvider -> jsonProvider.getInternet().userAgentAny());
+    INTERNET_USERAGENT("userAgent", jsonProvider -> jsonProvider.getInternet().userAgentAny()),
+
+    // Phone Number
+    PHONE_NUMBER("phoneNumber", jsonProvider -> jsonProvider.getPhoneNumber().phoneNumber()),
+    CELL_PHONE("cellPhone", jsonProvider -> jsonProvider.getPhoneNumber().cellPhone());
 
     private final String name;
     private final Function<JsonFormatPOJO, Object> provider;
