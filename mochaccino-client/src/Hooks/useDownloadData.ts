@@ -5,9 +5,8 @@ import { useGetOptions } from "./useRedux";
 export const useDownloadData = () => {
   const [limit, setLimit] = useState<string>("1000");
   const [isLoading, setIsLoading] = useState(false);
-  const [isPreviewLoading, setIsPreviewLoading] = useState(false);
-  const [previewData, setPreviewData] = useState();
   const [format, setFormat] = useState("csv");
+
   const optionProviders = useGetOptions();
 
   const handleDownloadData = () => {
@@ -44,44 +43,15 @@ export const useDownloadData = () => {
       });
   };
 
-  const handlePreviewData = () => {
-    setIsPreviewLoading(true);
-    let body = {
-      providers: optionProviders,
-      limit: Number(limit),
-    };
-    axios
-      .post(
-        `https://mochaccino-server.herokuapp.com/data?format=${format}`,
-        body,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
-      .then((response) => {
-        setPreviewData(response.data);
-      })
-      .then(() => {
-        console.log(JSON.stringify(previewData));
-        console.log(JSON.parse(JSON.stringify(previewData)));
-      })
-      .finally(() => setIsPreviewLoading(false))
-      .catch((err) => {
-        console.log(err.status);
-      });
+  const store = {
+    isLoading,
+    limit,
+    format,
+    setFormat,
+    handleDownloadData,
+    setLimit,
+    optionProviders,
   };
 
-  return {
-    previewData: previewData,
-    isLoading: isLoading,
-    isPreviewLoading: isPreviewLoading,
-    limit: limit,
-    format: format,
-    setFormat: setFormat,
-    handleDownloadData: handleDownloadData,
-    handlePreviewData: handlePreviewData,
-    setLimit: setLimit,
-  };
+  return store;
 };
