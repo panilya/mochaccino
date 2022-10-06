@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import { Spinner } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import { useGetOptions } from "../../Hooks/useRedux";
-import CopyToClipboard from "react-copy-to-clipboard";
 import LoadingButton from "../LoadingButton/LoadingButton";
 
 interface PreviewProps {}
