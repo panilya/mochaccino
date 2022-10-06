@@ -1,25 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import "./Modal.css";
 import { useNavigate, useParams } from "react-router-dom";
+
 import ModalButtons from "./ModalButtons";
-import {
-  useAppDispatch,
-  useAppSelector,
-  useGetOptions,
-} from "../../Hooks/useRedux";
-import { Badge } from "react-bootstrap";
+import { useAppDispatch, useGetOptions } from "../../Hooks/useRedux";
+import { Badge, Form } from "react-bootstrap";
 import { deleteOption } from "../../Redux/Slices/OptionSlice";
+import { SearchContext } from "../../Service/Contexts/searchContext";
 
 interface ModalComponentProps {
   children: React.ReactNode;
 }
 
 const ModalComponent: React.FC<ModalComponentProps> = ({ children }) => {
+  const [searchValue, setSearchValue] = useState("");
   const { id } = useParams();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const choosedOptionList = useGetOptions();
+
+  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(event.target.value);
+  };
+
   return (
     <>
       <Modal
@@ -50,7 +54,17 @@ const ModalComponent: React.FC<ModalComponentProps> = ({ children }) => {
             </span>
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body>{children}</Modal.Body>
+        <Modal.Body>
+          <Form.Control
+            placeholder="Search ..."
+            type="search"
+            value={searchValue}
+            onChange={handleSearch}
+          />
+          <SearchContext.Provider value={searchValue}>
+            {children}
+          </SearchContext.Provider>
+        </Modal.Body>
         <Modal.Footer>
           <ModalButtons id={id} />
         </Modal.Footer>
