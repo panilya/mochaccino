@@ -1,16 +1,14 @@
 import { useContext } from "react";
-import { Spinner } from "react-bootstrap";
-
-import { useNavigate, useParams } from "react-router-dom";
-import { useGetGroupsQuery } from "../../Redux/Slices/GroupsQuery";
-import { SearchContext } from "../../Service/Contexts/searchContext";
-import CardOption from "../Card/CardOption";
+import { useParams } from "react-router-dom";
+import { useGetGroupsQuery } from "../../../Redux/Slices/GroupsQuery";
+import { SearchContext } from "../../../Service/Contexts/searchContext";
+import CardOption from "../../Card/CardOption";
+import SpinnerComponent from "../../Spinner/SpinnerComponent";
 
 interface FakeDataListProps {}
 
 const FakeDataList: React.FC<FakeDataListProps> = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
   const searchValue = useContext(SearchContext);
   const { data, isLoading } = useGetGroupsQuery("");
   const list = data && data.find((el) => el.id === Number(id));
@@ -23,7 +21,7 @@ const FakeDataList: React.FC<FakeDataListProps> = () => {
 
   return (
     <div className="fake-data-list">
-      {isLoading && <Spinner animation={"border"} />}
+      {isLoading && <SpinnerComponent />}
       {filteredProviders &&
         filteredProviders.map((el, id) => <CardOption key={id} data={el} />)}
     </div>

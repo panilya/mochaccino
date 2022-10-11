@@ -1,10 +1,9 @@
-import { useContext, useEffect } from "react";
-import { Spinner } from "react-bootstrap";
-import { useGetGroupsQuery } from "../../Redux/Slices/GroupsQuery";
-import { SearchContext } from "../../Service/Contexts/searchContext";
-import CardCategory from "../Card/CardCategory";
-import "./Modal.css";
-
+import { useContext } from "react";
+import { useGetGroupsQuery } from "../../../Redux/Slices/GroupsQuery";
+import { SearchContext } from "../../../Service/Contexts/searchContext";
+import CardCategory from "../../Card/CardCategory";
+import SpinnerComponent from "../../Spinner/SpinnerComponent";
+import "../Modal.css";
 
 interface CategoriesListProps {}
 
@@ -24,7 +23,7 @@ const CategoriesList: React.FC<CategoriesListProps> = () => {
 
   return (
     <div className="categories-list">
-      {isLoading && <Spinner animation={"border"} />}
+      {isLoading && <SpinnerComponent />}
       {categoryList && categoryList}
     </div>
   );
