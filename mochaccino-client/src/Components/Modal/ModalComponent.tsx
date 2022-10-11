@@ -1,13 +1,11 @@
 import React, { useState } from "react";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
-import "./Modal.css";
-import { useNavigate, useParams } from "react-router-dom";
-
-import ModalButtons from "./ModalButtons";
-import { useAppDispatch, useGetOptions } from "../../Hooks/useRedux";
-import { Badge, Form } from "react-bootstrap";
-import { deleteOption } from "../../Redux/Slices/OptionSlice";
+import { Form } from "react-bootstrap";
+import ChoosedBadgeList from "../List/BadgeList/ChoosedBadgeList";
 import { SearchContext } from "../../Service/Contexts/searchContext";
+import "./Modal.css";
+import ModalButtons from "./ModalComponents/ModalButtons";
 
 interface ModalComponentProps {
   children: React.ReactNode;
@@ -16,9 +14,8 @@ interface ModalComponentProps {
 const ModalComponent: React.FC<ModalComponentProps> = ({ children }) => {
   const [searchValue, setSearchValue] = useState("");
   const { id } = useParams();
+  const location = useLocation();
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
-  const choosedOptionList = useGetOptions();
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
@@ -36,31 +33,19 @@ const ModalComponent: React.FC<ModalComponentProps> = ({ children }) => {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            <span className="modal__title-choosed-wrapper">
-              Choosed :
-              <span>
-                {choosedOptionList.map((el, id) => (
-                  <Badge
-                    onClick={() => dispatch(deleteOption(el))}
-                    key={id}
-                    style={{ margin: "0 .5em", cursor: "pointer" }}
-                    bg="light"
-                    text="dark"
-                  >
-                    {el}
-                  </Badge>
-                ))}
-              </span>
-            </span>
+            <ChoosedBadgeList />
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form.Control
-            placeholder="Search ..."
-            type="search"
-            value={searchValue}
-            onChange={handleSearch}
-          />
+          {!location.pathname.includes("preview") && (
+            <Form.Control
+              placeholder="Search ..."
+              type="search"
+              value={searchValue}
+              onChange={handleSearch}
+            />
+          )}
+
           <SearchContext.Provider value={searchValue}>
             {children}
           </SearchContext.Provider>

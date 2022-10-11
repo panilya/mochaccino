@@ -1,10 +1,10 @@
 import axios from "axios";
 import JSONPretty from "react-json-pretty";
 import { useEffect, useRef, useState } from "react";
-import { Spinner } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import { useGetOptions } from "../../Hooks/useRedux";
 import LoadingButton from "../LoadingButton/LoadingButton";
+import SpinnerComponent from "../Spinner/SpinnerComponent";
 
 interface PreviewProps {}
 
@@ -51,7 +51,7 @@ const Preview: React.FC<PreviewProps> = () => {
 
   return (
     <section>
-      {isPreviewLoading && <Spinner animation={"border"} />}
+      {isPreviewLoading && <SpinnerComponent />}
       {previewData && (
         <p ref={ref}>
           <JSONPretty data={previewData}></JSONPretty>

@@ -1,10 +1,10 @@
 import { Routes, Route } from "react-router-dom";
-import CategoriesList from "./Components/Modal/CategoriesList";
-import FakeDataList from "./Components/Modal/FakeDataList";
+import FakeDataList from "./Components/Modal/ModalComponents/FakeDataList";
 import ModalComponent from "./Components/Modal/ModalComponent";
 import Preview from "./Components/Modal/Preview";
 import Home from "./Page/Home/Home";
 import NotFound from "./Page/NotFound";
+import CategoriesList from "./Components/Modal/ModalComponents/CategoriesList";
 import "./Style/App.css";
 
 const App = () => {

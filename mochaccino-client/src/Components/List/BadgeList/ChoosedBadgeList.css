@@ -1,0 +1,9 @@
+.choosed-badge-list-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.choosed-badge__badge {
+  margin: 0 0.5em;
+  cursor: pointer;
+}
