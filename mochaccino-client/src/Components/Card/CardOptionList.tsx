@@ -1,6 +1,5 @@
 import { Card } from "react-bootstrap";
 import { convertCamel } from "../../Helpers/ConvertCamel";
-import { useAppDispatch } from "../../Hooks/useRedux";
 import { IProvider } from "../../Service/Interfaces";
 import "./Card.css";
 interface CardOptionListProps {
@@ -8,7 +7,6 @@ interface CardOptionListProps {
 }
 
 const CardOptionList: React.FC<CardOptionListProps> = ({ data }) => {
-  const dispatch = useAppDispatch();
   return (
     <Card
       className="card"

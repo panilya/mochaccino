@@ -15,7 +15,7 @@
   height: -moz-fit-content;
   height: fit-content;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 }
 
@@ -33,7 +33,7 @@
 
 #option-table__add-button {
   margin: 1em auto;
-  width: 50%;
+  width: 65%;
 }
 
 .option-table__delete {
