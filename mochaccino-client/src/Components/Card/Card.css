@@ -8,6 +8,12 @@
   transform: scale(1.02);
 }
 
+#card {
+  height: 100%;
+  width: 50%;
+  margin: 0 1em;
+}
+
 .card__body {
   position: relative;
   display: flex;
@@ -24,7 +30,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 16px;
   width: 100%;
   height: 100%;
 }
@@ -38,13 +43,12 @@
   text-align: center;
   position: absolute;
   width: 90%;
-  height: 80%;
+  height: 100%;
   text-align: center;
   background: #fff;
-  font-size: 13px;
+  color: #0d6efd;
   word-wrap: break-word;
   text-overflow: ellipsis;
-  overflow: hidden;
   opacity: 0%;
   transition: 0.2s;
 }/*# sourceMappingURL=Card.css.map */

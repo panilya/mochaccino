@@ -1,16 +1,15 @@
+import { Outlet, useNavigate } from "react-router-dom";
 import Header from "../../Components/Header/Header";
 import LoadingButton from "../../Components/LoadingButton/LoadingButton";
 import SelectComponent from "../../Components/Select/SelectComponent";
 import OptionTable from "../../Components/List/OptionTable";
-import { Outlet, useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../Hooks/useRedux";
+import Options from "../../Components/Options";
+import LocaleSelect from "../../Components/Select/LocaleSelect/LocaleSelect";
 import { useDownloadData } from "../../Hooks/useDownloadData";
+import { useAppDispatch, useAppSelector } from "../../Hooks/useRedux";
+import Form from "react-bootstrap/Form";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Home.css";
-import Form from "react-bootstrap/Form";
-import Options from "../../Components/Options";
-import { useState } from "react";
-import { setDefaultLocale } from "../../Redux/Slices/OptionSlice";
 
 interface HomeProps {}
 
@@ -65,18 +64,7 @@ const Home: React.FC<HomeProps> = () => {
                 placeholder="Amount goes here..."
               />
               <SelectComponent value={format} setFormat={setFormat} />
-              <Form.Label>Choose preferred locale:</Form.Label>
-              <Form.Select
-                value={defaultLocale}
-                onChange={(event) =>
-                  dispatch(setDefaultLocale(event.target.value))
-                }
-              >
-                <option value="custom">custom</option>
-                <option value="ua">ua</option>
-                <option value="us">us</option>
-                <option value="en">uk</option>
-              </Form.Select>
+              <LocaleSelect />
               {format === "csv" && <Options />}
             </div>
             <div className="home__button-wrapper">
