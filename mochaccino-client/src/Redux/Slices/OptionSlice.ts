@@ -1,36 +1,55 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, nanoid } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../Store";
 import { IProvider } from "../../Service/Interfaces";
 
-// Define a type for the slice state
 interface OptionState {
+  defaultLocale: string;
   value: IProvider[];
 }
-
-// Define the initial state using that type
+export interface ISetLocale {
+  id: string;
+  locale: string;
+}
 const initialState: OptionState = {
+  defaultLocale: "us",
   value: [],
 };
 
 export const optionSlice = createSlice({
   name: "option",
-  // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
-    // Use the PayloadAction type to declare the contents of `action.payload`
     addOption: (state, action: PayloadAction<IProvider>) => {
-      state.value.push(action.payload);
+      state.value.push({
+        ...action.payload,
+        id: nanoid(),
+        locale: state.defaultLocale,
+      });
+    },
+    setDefaultLocale: (state, action: PayloadAction<string>) => {
+      state.defaultLocale = action.payload;
+      if (state.defaultLocale !== "custom") {
+        state.value.map((el) => (el["locale"] = state.defaultLocale));
+      }
+    },
+    setLocale: (state, action: PayloadAction<ISetLocale>) => {
+      state.defaultLocale = "custom";
+      state.value.map((el) => {
+        if (el.id === action.payload.id) {
+          return (el["locale"] = action.payload.locale);
+        }
+      });
     },
     deleteOption: (state, action: PayloadAction<string>) => {
-      state.value = state.value.filter((el) => el.provider !== action.payload);
+      state.value = state.value.filter((el) => el.id !== action.payload);
     },
   },
 });
 
-export const { addOption, deleteOption } = optionSlice.actions;
+export const { addOption, deleteOption, setLocale, setDefaultLocale } =
+  optionSlice.actions;
 
-// Other code such as selectors can use the imported `RootState` type
 export const selectCount = (state: RootState) => state.options;
 
 export default optionSlice.reducer;

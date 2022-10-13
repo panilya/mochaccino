@@ -23,7 +23,9 @@ const FakeDataList: React.FC<FakeDataListProps> = () => {
     <div className="fake-data-list">
       {isLoading && <SpinnerComponent />}
       {filteredProviders &&
-        filteredProviders.map((el, id) => <CardOption key={id} data={el} />)}
+        filteredProviders.map((el) => (
+          <CardOption  key={id} data={el} />
+        ))}
     </div>
   );
 };

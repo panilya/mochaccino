@@ -10,12 +10,11 @@ interface CardOptionListProps {
 }
 
 const CardOptionList: React.FC<CardOptionListProps> = ({ data }) => {
-  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   return (
     <Card
       className="card"
-      onClick={() => dispatch(deleteOption(data.provider))}
+      onClick={() => dispatch(deleteOption(data.id))}
       style={{
         width: "100%",
         margin: "1em 0",
