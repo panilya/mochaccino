@@ -3,17 +3,21 @@ import LoadingButton from "../../Components/LoadingButton/LoadingButton";
 import SelectComponent from "../../Components/Select/SelectComponent";
 import OptionTable from "../../Components/List/OptionTable";
 import { Outlet, useNavigate } from "react-router-dom";
-import { useAppSelector } from "../../Hooks/useRedux";
+import { useAppDispatch, useAppSelector } from "../../Hooks/useRedux";
 import { useDownloadData } from "../../Hooks/useDownloadData";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Home.css";
 import Form from "react-bootstrap/Form";
 import Options from "../../Components/Options";
+import { useState } from "react";
+import { setDefaultLocale } from "../../Redux/Slices/OptionSlice";
 
 interface HomeProps {}
 
 const Home: React.FC<HomeProps> = () => {
   const optionList = useAppSelector((state) => state.options.value);
+  const defaultLocale = useAppSelector((state) => state.options.defaultLocale);
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { limit, setLimit, format, setFormat, isLoading, handleDownloadData } =
     useDownloadData();
@@ -42,7 +46,10 @@ const Home: React.FC<HomeProps> = () => {
         <div className="home__sides-wrapper">
           <div className="home__left-wrapper">
             <section className="home__table-wrapper">
-              <OptionTable optionList={optionList} />
+              <OptionTable
+                optionList={optionList}
+                defaultLocale={defaultLocale}
+              />
             </section>
           </div>
           <div className="home__right-wrapper">
@@ -58,6 +65,18 @@ const Home: React.FC<HomeProps> = () => {
                 placeholder="Amount goes here..."
               />
               <SelectComponent value={format} setFormat={setFormat} />
+              <Form.Label>Choose preferred locale:</Form.Label>
+              <Form.Select
+                value={defaultLocale}
+                onChange={(event) =>
+                  dispatch(setDefaultLocale(event.target.value))
+                }
+              >
+                <option value="custom">custom</option>
+                <option value="ua">ua</option>
+                <option value="us">us</option>
+                <option value="en">uk</option>
+              </Form.Select>
               {format === "csv" && <Options />}
             </div>
             <div className="home__button-wrapper">

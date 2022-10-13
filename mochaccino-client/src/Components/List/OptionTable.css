@@ -1,5 +1,5 @@
 .option-table {
-  width: 500px;
+  width: 800px;
   height: 100%;
   border: 2px solid rgba(0, 0, 0, 0.077);
   border-radius: 5px;
@@ -7,4 +7,18 @@
   padding: 1em;
   display: flex;
   flex-direction: column;
+}
+
+.option-table__row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#option-table-row__select {
+  width: 20%;
+}
+
+.option-table-row__label {
+  margin: 0 1em;
 }/*# sourceMappingURL=OptionTable.css.map */

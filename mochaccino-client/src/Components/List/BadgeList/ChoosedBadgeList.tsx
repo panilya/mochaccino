@@ -1,29 +1,30 @@
 import { Badge } from "react-bootstrap";
-import { useAppDispatch, useGetOptions } from "../../../Hooks/useRedux";
+import { useAppDispatch, useAppSelector } from "../../../Hooks/useRedux";
 import { deleteOption } from "../../../Redux/Slices/OptionSlice";
 import "./ChoosedBadgeList.css";
 
 interface ChoosedBadgeListProps {}
 
 const ChoosedBadgeList: React.FC<ChoosedBadgeListProps> = () => {
-  const choosedOptionList = useGetOptions();
+  const optionsList = useAppSelector((state) => state.options.value);
+
   const dispatch = useAppDispatch();
 
-  const handleDelete = (name: string) => dispatch(deleteOption(name));
+  const handleDelete = (id: string) => dispatch(deleteOption(id));
 
   return (
     <span className="choosed-badge-list-wrapper">
       Choosed:
       <span>
-        {choosedOptionList.map((el, id) => (
+        {optionsList.map((el) => (
           <Badge
             className="choosed-badge__badge"
-            onClick={() => handleDelete(el)}
-            key={id}
+            onClick={() => handleDelete(el.id)}
+            key={el.id}
             bg="light"
             text="dark"
           >
-            {el}
+            {el.provider}
           </Badge>
         ))}
       </span>

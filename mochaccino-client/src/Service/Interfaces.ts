@@ -10,4 +10,7 @@ export interface IFakeData {
 export interface IProvider {
   provider: string;
   example: string;
+  id: string;
+  locale: string;
 }
+
