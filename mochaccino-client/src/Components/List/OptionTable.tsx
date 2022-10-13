@@ -1,8 +1,9 @@
 import { useRef } from "react";
 import { Button, Form } from "react-bootstrap";
+import { BiTrash } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../Hooks/useRedux";
-import { setLocale } from "../../Redux/Slices/OptionSlice";
+import { deleteOption, setLocale } from "../../Redux/Slices/OptionSlice";
 import { IProvider } from "../../Service/Interfaces";
 import CardOptionList from "../Card/CardOptionList";
 import "./OptionTable.css";
@@ -19,22 +20,22 @@ const OptionTable: React.FC<OptionTableProps> = ({
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const ref = useRef<HTMLDivElement>(null);
-  ref.current?.scrollIntoView({ behavior: "smooth" });
 
   return (
     <section className="option-table">
-      {optionList.length === 0 && <p>Add options below!</p>}
+      {optionList.length === 0 && <p className="option-table__hint">Add options below!</p>}
       {optionList.length > 0 &&
         optionList.map((el, id) => {
           return (
             <div className="option-table__row">
+              <BiTrash
+                onClick={() => dispatch(deleteOption(el.id))}
+                className="option-table__delete"
+              />
               <CardOptionList key={id} data={el} />{" "}
-              <Form.Label className="option-table-row__label">
-                Locale:
-              </Form.Label>
               <Form.Select
                 id="option-table-row__select"
-                style={{ height: "65%" }}
+                style={{ height: "100%" }}
                 value={el.locale}
                 defaultValue={defaultLocale}
                 onChange={(event) =>
@@ -48,8 +49,16 @@ const OptionTable: React.FC<OptionTableProps> = ({
             </div>
           );
         })}
-      <Button onClick={() => navigate("categories")}>Add data</Button>
       <div ref={ref}></div>
+      <Button
+        id="option-table__add-button"
+        onClick={() => {
+          navigate("categories");
+          ref.current?.scrollIntoView({ behavior: "smooth" });
+        }}
+      >
+        Add data
+      </Button>
     </section>
   );
 };

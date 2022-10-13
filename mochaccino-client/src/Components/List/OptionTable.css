@@ -10,9 +10,17 @@
 }
 
 .option-table__row {
+  margin: 0.4em;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+}
+
+.option-table__hint {
+  text-align: center;
 }
 
 #option-table-row__select {
@@ -21,4 +29,40 @@
 
 .option-table-row__label {
   margin: 0 1em;
+}
+
+#option-table__add-button {
+  margin: 1em auto;
+  width: 50%;
+}
+
+.option-table__delete {
+  cursor: pointer;
+  height: 50%;
+  width: auto;
+  transition: 0.2s;
+}
+
+.option-table__delete:hover {
+  color: #0d6efd;
+}
+
+@media (max-height: 705px), screen and (max-width: 600px) {
+  .option-table__row {
+    font-size: 13px;
+  }
+  #option-table-row__select {
+    font-size: 13px;
+  }
+  .option-table__delete {
+    height: 30%;
+  }
+}
+@media screen and (max-width: 350px) {
+  .option-table__row {
+    font-size: 10px;
+  }
+  #option-table-row__select {
+    font-size: 10px;
+  }
 }/*# sourceMappingURL=OptionTable.css.map */
