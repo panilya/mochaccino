@@ -6,8 +6,9 @@ import OptionTable from "../../Components/List/OptionTable";
 import Options from "../../Components/Options";
 import LocaleSelect from "../../Components/Select/LocaleSelect/LocaleSelect";
 import { useDownloadData } from "../../Hooks/useDownloadData";
-import { useAppDispatch, useAppSelector } from "../../Hooks/useRedux";
+import { useAppSelector } from "../../Hooks/useRedux";
 import Form from "react-bootstrap/Form";
+import { Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Home.css";
 
@@ -16,7 +17,6 @@ interface HomeProps {}
 const Home: React.FC<HomeProps> = () => {
   const optionList = useAppSelector((state) => state.options.value);
   const defaultLocale = useAppSelector((state) => state.options.defaultLocale);
-  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { limit, setLimit, format, setFormat, isLoading, handleDownloadData } =
     useDownloadData();
@@ -49,6 +49,14 @@ const Home: React.FC<HomeProps> = () => {
                 optionList={optionList}
                 defaultLocale={defaultLocale}
               />
+              <Button
+                id="option-table__add-button"
+                onClick={() => {
+                  navigate("categories");
+                }}
+              >
+                Add data
+              </Button>
             </section>
           </div>
           <div className="home__right-wrapper">
