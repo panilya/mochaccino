@@ -3,7 +3,7 @@ import { useGetGroupsQuery } from "../../../Redux/Slices/GroupsQuery";
 import { SearchContext } from "../../../Service/Contexts/searchContext";
 import CardCategory from "../../Card/CardCategory";
 import SpinnerComponent from "../../Spinner/SpinnerComponent";
-import "../Modal.css";
+import "../Modal.scss";
 
 interface CategoriesListProps {}
 

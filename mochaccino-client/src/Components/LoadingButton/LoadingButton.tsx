@@ -1,5 +1,5 @@
 import { Button, Spinner } from "react-bootstrap";
-import "./LoadingButton.css";
+import "./LoadingButton.scss";
 interface LoadingButtonProps {
   name: string;
   outline?: boolean;

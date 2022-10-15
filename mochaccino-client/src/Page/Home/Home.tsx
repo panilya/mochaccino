@@ -10,7 +10,7 @@ import { useAppSelector } from "../../Hooks/useRedux";
 import Form from "react-bootstrap/Form";
 import { Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./Home.css";
+import "./Home.scss";
 
 interface HomeProps {}
 

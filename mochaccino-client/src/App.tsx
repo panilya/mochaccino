@@ -5,7 +5,7 @@ import Preview from "./Components/Modal/Preview";
 import Home from "./Page/Home/Home";
 import NotFound from "./Page/NotFound";
 import CategoriesList from "./Components/Modal/ModalComponents/CategoriesList";
-import "./Style/App.css";
+import "./Style/App.scss";
 
 const App = () => {
   return (

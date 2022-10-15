@@ -1,5 +1,5 @@
 import { Form } from "react-bootstrap";
-import "./SelectComponent.css";
+import "./SelectComponent.scss";
 interface SelectComponentProps {
   value: string;
   setFormat: React.Dispatch<React.SetStateAction<string>>;
