@@ -1,7 +1,7 @@
 import { Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { IFakeData } from "../../Service/Interfaces";
-import "./Card.css";
+import "./Card.scss";
 interface CardCategoryProps {
   data: IFakeData;
 }

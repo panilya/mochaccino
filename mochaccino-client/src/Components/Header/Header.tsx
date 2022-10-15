@@ -1,4 +1,4 @@
-import "./Header.css";
+import "./Header.scss";
 import { BiCoffeeTogo } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 interface HeaderProps {}

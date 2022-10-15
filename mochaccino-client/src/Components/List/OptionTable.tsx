@@ -5,7 +5,7 @@ import { useAppDispatch } from "../../Hooks/useRedux";
 import { deleteOption, setLocale } from "../../Redux/Slices/OptionSlice";
 import { IProvider } from "../../Service/Interfaces";
 import CardOptionList from "../Card/CardOptionList";
-import "./OptionTable.css";
+import "./OptionTable.scss";
 
 interface OptionTableProps {
   optionList: IProvider[];

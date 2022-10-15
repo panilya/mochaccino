@@ -4,7 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import { Form } from "react-bootstrap";
 import ChoosedBadgeList from "../List/BadgeList/ChoosedBadgeList";
 import { SearchContext } from "../../Service/Contexts/searchContext";
-import "./Modal.css";
+import "./Modal.scss";
 import ModalButtons from "./ModalComponents/ModalButtons";
 
 interface ModalComponentProps {

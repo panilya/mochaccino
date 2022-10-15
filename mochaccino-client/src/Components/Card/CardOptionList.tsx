@@ -1,7 +1,7 @@
 import { Card } from "react-bootstrap";
 import { convertCamel } from "../../Helpers/ConvertCamel";
 import { IProvider } from "../../Service/Interfaces";
-import "./Card.css";
+import "./Card.scss";
 interface CardOptionListProps {
   data: IProvider;
 }

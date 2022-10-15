@@ -1,5 +1,5 @@
 import { Spinner } from "react-bootstrap";
-import "./SpinnerComponent.css";
+import "./SpinnerComponent.scss";
 interface SpinnerComponentProps {}
 
 const SpinnerComponent: React.FC<SpinnerComponentProps> = () => {

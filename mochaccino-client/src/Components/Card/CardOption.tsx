@@ -4,7 +4,7 @@ import { convertCamel } from "../../Helpers/ConvertCamel";
 import { useAppDispatch } from "../../Hooks/useRedux";
 import { addOption } from "../../Redux/Slices/OptionSlice";
 import { IProvider } from "../../Service/Interfaces";
-import "./Card.css";
+import "./Card.scss";
 interface CardOptionProps {
   data: IProvider;
 }

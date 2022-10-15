@@ -1,7 +1,7 @@
 import { Badge } from "react-bootstrap";
 import { useAppDispatch, useAppSelector } from "../../../Hooks/useRedux";
 import { deleteOption } from "../../../Redux/Slices/OptionSlice";
-import "./ChoosedBadgeList.css";
+import "./ChoosedBadgeList.scss";
 
 interface ChoosedBadgeListProps {}
 
