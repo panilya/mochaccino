@@ -20,7 +20,7 @@ const SelectComponent: React.FC<SelectComponentProps> = (props) => {
       >
         <option value="csv">CSV</option>
         <option value="json">JSON</option>
-        <option value="json">SQL [in develop]</option>
+        <option value="json">SQL <span style={{ opacity: ".6" }}>[in development]</span></option>
       </Form.Select>
     </>
   );

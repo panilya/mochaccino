@@ -12,7 +12,7 @@ const Options: React.FC<OptionsProps> = () => {
     <div>
       <Form>
         <Form.Label style={{ opacity: ".7", marginTop: "1em" }}>
-          Options:
+          <span style={{ opacity: ".6" }}>[in development]</span> Options:
         </Form.Label>
         <InputGroup className="mb-3">
           <InputGroup.Text>Separator?</InputGroup.Text>

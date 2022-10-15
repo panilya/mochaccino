@@ -9,7 +9,10 @@
 }
 
 .home {
-  background: #8f6a52;
+  background: url("../../Misc/blob-scene-haikei.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   height: 100vh;
   width: 100%;
   display: flex;

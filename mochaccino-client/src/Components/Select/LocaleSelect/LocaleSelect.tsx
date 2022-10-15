@@ -9,7 +9,11 @@ const LocaleSelect: React.FC<LocaleSelectProps> = () => {
   const defaultLocale = useAppSelector((state) => state.options.defaultLocale);
   return (
     <>
-      <Form.Label>Choose preferred locale:</Form.Label>
+      <Form.Label>
+        {" "}
+        <span style={{ opacity: ".6" }}>[in development]</span> Choose preferred
+        locale:
+      </Form.Label>
       <Form.Select
         value={defaultLocale}
         onChange={(event) => dispatch(setDefaultLocale(event.target.value))}

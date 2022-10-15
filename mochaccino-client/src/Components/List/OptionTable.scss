@@ -38,7 +38,10 @@
   color: #0d6efd;
 }
 
-@media (max-height: 705px), screen and (max-width: 600px) {
+@media (max-height: 705px), screen and (max-width: 800px) {
+  .option-table {
+    width: 100%;
+  }
   .option-table__row {
     font-size: 13px;
   }
