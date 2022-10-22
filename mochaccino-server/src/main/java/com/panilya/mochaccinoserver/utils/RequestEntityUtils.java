@@ -29,7 +29,7 @@ public class RequestEntityUtils {
             case "json":
                 return DataFormat.JSON;
             case "sql":
-                throw new NotImplementedException("SQL format is not implemented yet");
+                return DataFormat.SQL;
             default:
                 throw new NoSuchFieldException("Format is not specified");
         }

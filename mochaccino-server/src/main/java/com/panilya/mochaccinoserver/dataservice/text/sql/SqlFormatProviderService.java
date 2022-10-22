@@ -1,17 +1,11 @@
-package com.panilya.mochaccinoserver.dataservice.text.json;
+package com.panilya.mochaccinoserver.dataservice.text.sql;
 
 import com.panilya.mochaccinoserver.dataservice.ProviderService;
 import com.panilya.mochaccinoserver.dataservice.text.csv.CsvDataProvider;
 import com.panilya.mochaccinoserver.model.RequestEntity;
 import com.panilya.mochaccinoserver.utils.RequestEntityUtils;
 import net.datafaker.Faker;
-
-import net.datafaker.formats.Format;
-import net.datafaker.formats.Json;
-import net.datafaker.transformations.Field;
-import net.datafaker.transformations.JsonTransformer;
-import net.datafaker.transformations.Schema;
-import net.datafaker.transformations.SimpleField;
+import net.datafaker.transformations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,18 +14,17 @@ import java.util.Collections;
 import java.util.List;
 
 @Service
-public class JsonFormatProviderService implements ProviderService {
+public class SqlFormatProviderService implements ProviderService {
 
     private final Faker faker;
 
     @Autowired
-    public JsonFormatProviderService(Faker faker) {
+    public SqlFormatProviderService(Faker faker) {
         this.faker = faker;
     }
 
     @Override
     public String provideData(RequestEntity requestEntity) {
-
         List<String> values;
         try {
             values = RequestEntityUtils.getValues(requestEntity);
@@ -40,7 +33,7 @@ public class JsonFormatProviderService implements ProviderService {
             values = Collections.emptyList();
         }
 
-        return new JsonTransformer<>().generate(generateSchema(values), requestEntity.getLimit());
+        return new SqlTransformer.SqlTransformerBuilder().dialect(SqlDialect.POSTGRES).tableName("person").build().generate(generateSchema(values), requestEntity.getLimit());
     }
 
     private Schema generateSchema(List<String> columns) {
