@@ -3,6 +3,7 @@ package com.panilya.mochaccinoserver.controller;
 import com.panilya.mochaccinoserver.model.RequestEntity;
 import com.panilya.mochaccinoserver.dataservice.file.FileDataGenerationService;
 import com.panilya.mochaccinoserver.dataservice.text.DataGenerationService;
+import com.panilya.mochaccinoserver.model.RequestParamsContainer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -23,18 +24,32 @@ public class DataGenerationController {
     }
 
     @PostMapping("/data")
-    public ResponseEntity<String> generateMockData(@RequestBody RequestEntity requestEntity, @RequestParam(name = "format") String format) {
-        return org.springframework.http.ResponseEntity.ok(dataGenerationService.generateData(requestEntity, format));
+    public ResponseEntity<String> generateMockData(@RequestBody RequestEntity requestEntity,
+                                                   @RequestParam(name = "format") String format,
+                                                   @RequestParam(name = "tableName", required = false, defaultValue = "table") String tableName,
+                                                   @RequestParam(name = "dialect", required = false, defaultValue = "POSTGRES") String dialect,
+                                                   @RequestParam(name = "header", required = false, defaultValue = "true") Boolean header,
+                                                   @RequestParam(name = "separator", required = false, defaultValue = ",") String separator) {
+
+        RequestParamsContainer parameters = new RequestParamsContainer(tableName, dialect, header, separator);
+        return org.springframework.http.ResponseEntity.ok(dataGenerationService.generateData(requestEntity, format, parameters));
     }
 
     @PostMapping("/data/download")
-    public ResponseEntity<byte[]> downloadMockDataAsFile(@RequestBody RequestEntity requestEntity, @RequestParam(name = "format") String format) {
+    public ResponseEntity<byte[]> downloadMockDataAsFile(@RequestBody RequestEntity requestEntity, @RequestParam(name = "format") String format,
+                                                         @RequestParam(name = "tableName", required = false, defaultValue = "table") String tableName,
+                                                         @RequestParam(name = "dialect", required = false, defaultValue = "POSTGRES") String dialect,
+                                                         @RequestParam(name = "header", required = false, defaultValue = "true") Boolean header,
+                                                         @RequestParam(name = "separator", required = false, defaultValue = ",") String separator) {
+
+        RequestParamsContainer parameters = new RequestParamsContainer(tableName, dialect, header, separator);
+        byte[] dataInFile = fileDataGenerationService.generateDataInFile(requestEntity, format, parameters);
+
         MediaType applicationOctetStream = MediaType.APPLICATION_OCTET_STREAM;
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add(HttpHeaders.ACCESS_CONTROL_EXPOSE_HEADERS, "Content-Disposition");
         httpHeaders.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + "MOCK_DATA." + format + "\"");
         httpHeaders.add("Data-Fileformat", "."+format);
-        byte[] dataInFile = fileDataGenerationService.generateDataInFile(requestEntity, format);
         return ResponseEntity.ok()
                 .headers(httpHeaders)
                 .contentType(applicationOctetStream)

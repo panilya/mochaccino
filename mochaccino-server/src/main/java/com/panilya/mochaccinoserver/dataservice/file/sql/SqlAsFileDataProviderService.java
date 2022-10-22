@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.panilya.mochaccinoserver.dataservice.file.FileProviderService;
 import com.panilya.mochaccinoserver.dataservice.text.formatservices.BaseDataProvider;
 import com.panilya.mochaccinoserver.model.RequestEntity;
+import com.panilya.mochaccinoserver.model.RequestParamsContainer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
@@ -19,8 +20,8 @@ public class SqlAsFileDataProviderService implements FileProviderService {
     }
 
     @Override
-    public byte[] getDataAsFile(RequestEntity requestEntity) throws IOException {
-        String provideData = providerService.generateData(requestEntity);
+    public byte[] getDataAsFile(RequestEntity requestEntity, RequestParamsContainer parameters) throws IOException {
+        String provideData = providerService.generateData(requestEntity, parameters);
         ObjectMapper mapper = new ObjectMapper();
 
         byte[] bytes = new byte[0];
