@@ -4,6 +4,7 @@ import com.panilya.mochaccinoserver.dataservice.DataFormat;
 import com.panilya.mochaccinoserver.dataservice.ProviderService;
 import com.panilya.mochaccinoserver.dataservice.text.csv.CsvFormatProviderService;
 import com.panilya.mochaccinoserver.dataservice.text.json.JsonFormatProviderService;
+import com.panilya.mochaccinoserver.dataservice.text.sql.SqlFormatProviderService;
 import net.datafaker.Faker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,8 @@ public class FormatProviderServiceFactory {
                 return new CsvFormatProviderService(faker);
             case JSON:
                 return new JsonFormatProviderService(faker);
+            case SQL:
+                return new SqlFormatProviderService(faker);
             default:
                 throw new IllegalStateException("Error in ProviderServiceFactory");
         }

@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
 import net.datafaker.*;
+import net.datafaker.providers.base.*;
 
 @ToString
 @Getter

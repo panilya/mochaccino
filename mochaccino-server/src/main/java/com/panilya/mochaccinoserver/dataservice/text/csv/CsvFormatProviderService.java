@@ -1,17 +1,23 @@
 package com.panilya.mochaccinoserver.dataservice.text.csv;
 
-import com.panilya.mochaccinoserver.model.RequestEntity;
 import com.panilya.mochaccinoserver.dataservice.ProviderService;
+import com.panilya.mochaccinoserver.model.RequestEntity;
 import com.panilya.mochaccinoserver.utils.RequestEntityUtils;
 import net.datafaker.Faker;
-import net.datafaker.fileformats.Csv;
-import net.datafaker.fileformats.Format;
+import net.datafaker.formats.Csv;
+import net.datafaker.formats.Format;
+import net.datafaker.transformations.CsvTransformer;
+import net.datafaker.transformations.Field;
+import net.datafaker.transformations.Schema;
+import net.datafaker.transformations.SimpleField;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import static java.io.File.separator;
 
 @Service
 public class CsvFormatProviderService implements ProviderService {
@@ -34,23 +40,39 @@ public class CsvFormatProviderService implements ProviderService {
             values = Collections.emptyList();
         }
 
-        String csv = Format.toCsv(traverseCsvColumnsList(values))
-                .header(requestEntity.isHeader())
-                .separator(getSeparator(requestEntity))
-                .limit(requestEntity.getLimit())
-                .build().get();
-        return csv;
+        CsvTransformer<?> transformer =
+                new CsvTransformer.CsvTransformerBuilder<>().header(requestEntity.isHeader()).separator(getSeparator(requestEntity)).build();
+        String generate = transformer.generate(generateSchema(values), requestEntity.getLimit());
+
+//        String csv = Format.toCsv(traverseCsvColumnsList(values))
+//                .header(requestEntity.isHeader())
+//                .separator(getSeparator(requestEntity))
+//                .limit(requestEntity.getLimit())
+//                .build().get();
+        return generate;
     }
 
-    private List<Csv.Column> traverseCsvColumnsList(List<String> columns) {
-        List<Csv.Column> result = new ArrayList<>();
+    private Schema generateSchema(List<String> columns) {
+        List<SimpleField<Object, String>> fields = new ArrayList<>(columns.size());
 
         for (String column : columns) {
             CsvDataProvider provider = CsvDataProvider.of(column);
-            result.add(Csv.Column.of(provider.getHeader(), provider.getProvider().apply(faker)));
+            SimpleField<Object, String> field = Field.field(provider.getName(), () -> provider.getProvider().apply(faker));
+            fields.add(field);
         }
-        return result;
+
+        return new Schema.SchemaBuilder<>().of(fields.toArray(new Field[0])).build();
     }
+
+//    private List<Csv.Column> traverseCsvColumnsList(List<String> columns) {
+//        List<Csv.Column> result = new ArrayList<>();
+//
+//        for (String column : columns) {
+//            CsvDataProvider provider = CsvDataProvider.of(column);
+//            result.add(Csv.Column.of(provider.getHeader(), provider.getProvider().apply(faker)));
+//        }
+//        return result;
+//    }
 
     private String getSeparator(RequestEntity requestEntity) {
         if (requestEntity.getSeparator() == null) {
