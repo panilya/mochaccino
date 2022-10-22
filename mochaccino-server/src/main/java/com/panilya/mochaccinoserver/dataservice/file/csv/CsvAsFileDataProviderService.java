@@ -4,6 +4,7 @@ import com.panilya.mochaccinoserver.dataservice.text.formatservices.BaseDataProv
 import com.panilya.mochaccinoserver.model.RequestEntity;
 import com.panilya.mochaccinoserver.dataservice.ProviderService;
 import com.panilya.mochaccinoserver.dataservice.file.FileProviderService;
+import com.panilya.mochaccinoserver.model.RequestParamsContainer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -21,8 +22,8 @@ public class CsvAsFileDataProviderService implements FileProviderService {
     }
 
     @Override
-    public byte[] getDataAsFile(RequestEntity requestEntity) {
-        String providedData = providerService.generateData(requestEntity);
+    public byte[] getDataAsFile(RequestEntity requestEntity, RequestParamsContainer parameters) {
+        String providedData = providerService.generateData(requestEntity, parameters);
         byte[] providedDataBytes = providedData.getBytes(StandardCharsets.UTF_8);
 
         return providedDataBytes;

@@ -1,10 +1,13 @@
 package com.panilya.mochaccinoserver.dataservice.text.formatservices;
 
 import com.panilya.mochaccinoserver.model.RequestEntity;
+import com.panilya.mochaccinoserver.model.RequestParamsContainer;
 import net.datafaker.Faker;
 import net.datafaker.transformations.CsvTransformer;
 import net.datafaker.transformations.Schema;
 import org.springframework.stereotype.Service;
+
+import java.util.Objects;
 
 @Service
 public class CsvFormatProviderService extends BaseDataProvider {
@@ -16,15 +19,12 @@ public class CsvFormatProviderService extends BaseDataProvider {
     }
 
     @Override
-    protected String generateData(Schema schema, RequestEntity requestEntity) {
-        return new CsvTransformer.CsvTransformerBuilder<>().header(requestEntity.isHeader()).separator(getSeparator(requestEntity)).build().generate(schema, requestEntity.getLimit());
+    protected String generateData(Schema schema, RequestEntity requestEntity, RequestParamsContainer parameters) {
+        return new CsvTransformer.CsvTransformerBuilder<>().header(parameters.header).separator(getSeparator(parameters)).build().generate(schema, requestEntity.getLimit());
     }
 
-    private String getSeparator(RequestEntity requestEntity) {
-        if (requestEntity.getSeparator() == null) {
-            return DEFAULT_SEPARATOR;
-        }
-        return requestEntity.getSeparator();
+    private String getSeparator(RequestParamsContainer parameters) {
+        return Objects.requireNonNullElse(parameters.separator, DEFAULT_SEPARATOR);
     }
 
 }

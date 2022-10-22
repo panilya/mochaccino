@@ -17,17 +17,11 @@ public class RequestEntity {
     private final List<String> providers;
     @JsonProperty("limit")
     private final int limit;
-    @JsonProperty("separator")
-    private final String separator;
-    @JsonProperty("header")
-    private final boolean header;
 
     @JsonCreator
-    @ConstructorProperties({"providers", "limit", "separator", "header"})
-    public RequestEntity(List<String> providers, int limit, String separator, boolean header) {
+    @ConstructorProperties({"providers", "limit"})
+    public RequestEntity(List<String> providers, int limit) {
         this.providers = providers;
         this.limit = limit;
-        this.separator = separator;
-        this.header = header;
     }
 }

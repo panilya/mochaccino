@@ -3,6 +3,7 @@ package com.panilya.mochaccinoserver.dataservice.text;
 import com.panilya.mochaccinoserver.dataservice.text.formatservices.BaseDataProvider;
 import com.panilya.mochaccinoserver.model.RequestEntity;
 import com.panilya.mochaccinoserver.dataservice.DataFormat;
+import com.panilya.mochaccinoserver.model.RequestParamsContainer;
 import com.panilya.mochaccinoserver.utils.RequestEntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +25,7 @@ public class DataGenerationService {
         this.providerServiceFactory = providerServiceFactory;
     }
 
-    public String generateData(RequestEntity requestEntity, String requestParamFormat) {
+    public String generateData(RequestEntity requestEntity, String requestParamFormat, RequestParamsContainer parameters) {
 
         DataFormat format;
         try {
@@ -34,6 +35,6 @@ public class DataGenerationService {
         }
 
         BaseDataProvider providerService = providerServiceFactory.createProviderService(format);
-        return providerService.generateData(requestEntity);
+        return providerService.generateData(requestEntity, parameters);
     }
 }

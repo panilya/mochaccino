@@ -2,6 +2,7 @@ package com.panilya.mochaccinoserver.dataservice.file;
 
 import com.panilya.mochaccinoserver.model.RequestEntity;
 import com.panilya.mochaccinoserver.dataservice.DataFormat;
+import com.panilya.mochaccinoserver.model.RequestParamsContainer;
 import com.panilya.mochaccinoserver.utils.RequestEntityUtils;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class FileDataGenerationService {
     }
 
     @SneakyThrows
-    public byte[] generateDataInFile(RequestEntity requestEntity, String requestParamFormat) {
+    public byte[] generateDataInFile(RequestEntity requestEntity, String requestParamFormat, RequestParamsContainer parameters) {
         DataFormat format;
         try {
             format = RequestEntityUtils.readFormatParam(requestParamFormat);
@@ -29,7 +30,7 @@ public class FileDataGenerationService {
         }
 
         FileProviderService providerService = fileProviderServiceFactory.createDataProviderService(format);
-        return providerService.getDataAsFile(requestEntity);
+        return providerService.getDataAsFile(requestEntity, parameters);
     }
 
 }

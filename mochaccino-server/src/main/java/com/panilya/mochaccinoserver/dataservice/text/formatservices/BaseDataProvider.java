@@ -2,6 +2,7 @@ package com.panilya.mochaccinoserver.dataservice.text.formatservices;
 
 import com.panilya.mochaccinoserver.dataservice.text.AvailableDataProviders;
 import com.panilya.mochaccinoserver.model.RequestEntity;
+import com.panilya.mochaccinoserver.model.RequestParamsContainer;
 import com.panilya.mochaccinoserver.utils.RequestEntityUtils;
 import net.datafaker.Faker;
 import net.datafaker.transformations.Field;
@@ -24,10 +25,10 @@ public abstract class BaseDataProvider {
         this.faker = faker;
     }
 
-    protected abstract String generateData(Schema schema, RequestEntity requestEntity);
+    protected abstract String generateData(Schema schema, RequestEntity requestEntity, RequestParamsContainer parameters);
 
-    public String generateData(RequestEntity requestEntity) {
-        return generateData(generateSchema(extractColumns(requestEntity)), requestEntity);
+    public String generateData(RequestEntity requestEntity, RequestParamsContainer parameters) {
+        return generateData(generateSchema(extractColumns(requestEntity)), requestEntity, parameters);
     }
 
     private Schema generateSchema(List<String> columns) {

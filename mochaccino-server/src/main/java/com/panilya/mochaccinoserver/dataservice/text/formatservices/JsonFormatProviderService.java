@@ -1,6 +1,7 @@
 package com.panilya.mochaccinoserver.dataservice.text.formatservices;
 
 import com.panilya.mochaccinoserver.model.RequestEntity;
+import com.panilya.mochaccinoserver.model.RequestParamsContainer;
 import net.datafaker.Faker;
 import net.datafaker.transformations.JsonTransformer;
 import net.datafaker.transformations.Schema;
@@ -14,7 +15,7 @@ public class JsonFormatProviderService extends BaseDataProvider {
     }
 
     @Override
-    protected String generateData(Schema schema, RequestEntity requestEntity) {
+    protected String generateData(Schema schema, RequestEntity requestEntity, RequestParamsContainer parameters) {
         return new JsonTransformer<>().generate(schema, requestEntity.getLimit());
     }
 }
