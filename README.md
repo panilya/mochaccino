@@ -15,7 +15,7 @@ A Web Service that generates mock data for any use cases.
 ## Supported formats:
 - JSON
 - CSV
-- *SQL* (in active development)
+- SQL
 
 ## Data providers:
 
