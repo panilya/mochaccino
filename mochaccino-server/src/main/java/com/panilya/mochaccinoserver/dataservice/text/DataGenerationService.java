@@ -1,8 +1,8 @@
 package com.panilya.mochaccinoserver.dataservice.text;
 
+import com.panilya.mochaccinoserver.dataservice.text.formatservices.BaseDataProvider;
 import com.panilya.mochaccinoserver.model.RequestEntity;
 import com.panilya.mochaccinoserver.dataservice.DataFormat;
-import com.panilya.mochaccinoserver.dataservice.ProviderService;
 import com.panilya.mochaccinoserver.utils.RequestEntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,7 +33,7 @@ public class DataGenerationService {
             throw new NoSuchElementException("Format is not specified");
         }
 
-        ProviderService providerService = providerServiceFactory.createProviderService(format);
-        return providerService.provideData(requestEntity);
+        BaseDataProvider providerService = providerServiceFactory.createProviderService(format);
+        return providerService.generateData(requestEntity);
     }
 }

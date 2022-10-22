@@ -1,4 +1,4 @@
-package com.panilya.mochaccinoserver.dataservice.text.csv;
+package com.panilya.mochaccinoserver.dataservice.text;
 
 import net.datafaker.Faker;
 
@@ -9,7 +9,7 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
-public enum CsvDataProvider {
+public enum AvailableDataProviders {
     // Name
     FULL_NAME("fullName", () -> "full_name", faker -> faker.name().fullName()),
     FIRST_NAME("firstName", () -> "first_name", faker -> faker.name().firstName()),
@@ -57,16 +57,16 @@ public enum CsvDataProvider {
     private final Supplier<String> header; // Header of CSV file
     private final Function<Faker, String> provider;
 
-    CsvDataProvider(String name, Supplier<String> header, Function<Faker, String> provider) {
+    AvailableDataProviders(String name, Supplier<String> header, Function<Faker, String> provider) {
         this.name = name;
         this.header = header;
         this.provider = provider;
     }
 
-    private static final Map<String, CsvDataProvider> CSV_PROVIDER_MAP = Collections.unmodifiableMap(
+    private static final Map<String, AvailableDataProviders> CSV_PROVIDER_MAP = Collections.unmodifiableMap(
             Arrays.stream(values()).collect(Collectors.toMap(t -> t.name, Function.identity())));
 
-    public static CsvDataProvider of(String name) {
+    public static AvailableDataProviders of(String name) {
         return CSV_PROVIDER_MAP.get(name);
     }
 
