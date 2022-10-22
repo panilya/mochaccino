@@ -4,6 +4,8 @@ import com.panilya.mochaccinoserver.model.RequestEntity;
 import com.panilya.mochaccinoserver.dataservice.file.FileDataGenerationService;
 import com.panilya.mochaccinoserver.dataservice.text.DataGenerationService;
 import com.panilya.mochaccinoserver.model.RequestParamsContainer;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -23,6 +25,7 @@ public class DataGenerationController {
         this.fileDataGenerationService = fileDataGenerationService;
     }
 
+    @Operation(summary = "Generate data in text")
     @PostMapping("/data")
     public ResponseEntity<String> generateMockData(@RequestBody RequestEntity requestEntity,
                                                    @RequestParam(name = "format") String format,
@@ -35,6 +38,7 @@ public class DataGenerationController {
         return org.springframework.http.ResponseEntity.ok(dataGenerationService.generateData(requestEntity, format, parameters));
     }
 
+    @Operation(summary = "Generate data in files")
     @PostMapping("/data/download")
     public ResponseEntity<byte[]> downloadMockDataAsFile(@RequestBody RequestEntity requestEntity, @RequestParam(name = "format") String format,
                                                          @RequestParam(name = "tableName", required = false, defaultValue = "table") String tableName,
