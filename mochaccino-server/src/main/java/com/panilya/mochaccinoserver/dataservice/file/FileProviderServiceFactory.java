@@ -4,9 +4,9 @@ import com.panilya.mochaccinoserver.dataservice.DataFormat;
 import com.panilya.mochaccinoserver.dataservice.file.csv.CsvAsFileDataProviderService;
 import com.panilya.mochaccinoserver.dataservice.file.json.JsonAsFileDataProviderService;
 import com.panilya.mochaccinoserver.dataservice.file.sql.SqlAsFileDataProviderService;
-import com.panilya.mochaccinoserver.dataservice.text.csv.CsvFormatProviderService;
-import com.panilya.mochaccinoserver.dataservice.text.json.JsonFormatProviderService;
-import com.panilya.mochaccinoserver.dataservice.text.sql.SqlFormatProviderService;
+import com.panilya.mochaccinoserver.dataservice.text.formatservices.CsvFormatProviderService;
+import com.panilya.mochaccinoserver.dataservice.text.formatservices.JsonFormatProviderService;
+import com.panilya.mochaccinoserver.dataservice.text.formatservices.SqlFormatProviderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

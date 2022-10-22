@@ -12,11 +12,11 @@ import java.util.NoSuchElementException;
 @Service
 public class FileDataGenerationService {
 
-    private final FileProviderServiceFactory fileProviderService;
+    private final FileProviderServiceFactory fileProviderServiceFactory;
 
     @Autowired
-    public FileDataGenerationService(FileProviderServiceFactory fileProviderService) {
-        this.fileProviderService = fileProviderService;
+    public FileDataGenerationService(FileProviderServiceFactory fileProviderServiceFactory) {
+        this.fileProviderServiceFactory = fileProviderServiceFactory;
     }
 
     @SneakyThrows
@@ -28,7 +28,7 @@ public class FileDataGenerationService {
             throw new NoSuchElementException("Format is not specified");
         }
 
-        FileProviderService providerService = fileProviderService.createDataProviderService(format);
+        FileProviderService providerService = fileProviderServiceFactory.createDataProviderService(format);
         return providerService.getDataAsFile(requestEntity);
     }
 
