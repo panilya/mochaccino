@@ -17,7 +17,7 @@ import "./Home.scss";
 interface HomeProps {}
 
 const Home: React.FC<HomeProps> = () => {
-  const isButtonDisabled:number= useAppSelector(
+  const isButtonDisabled: number = useAppSelector(
     (state) => state.options.value.length
   );
   const dispatch = useAppDispatch();
@@ -89,7 +89,7 @@ const Home: React.FC<HomeProps> = () => {
           </div>
         </div>
         <footer className="home__footer">
-          <AiOutlineInfoCircle />
+          <AiOutlineInfoCircle onClick={() => navigate(`credits`)} />
           <p className="home__credits">
             | Powered by{" "}
             <a href="https://github.com/datafaker-net/datafaker">Datafaker</a>{" "}

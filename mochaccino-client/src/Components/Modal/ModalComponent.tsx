@@ -37,14 +37,15 @@ const ModalComponent: React.FC<ModalComponentProps> = ({ children }) => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {!location.pathname.includes("preview") && (
-            <Form.Control
-              placeholder="Search ..."
-              type="search"
-              value={searchValue}
-              onChange={handleSearch}
-            />
-          )}
+          {!location.pathname.includes("preview") ||
+            (!location.pathname.includes("credits") && (
+              <Form.Control
+                placeholder="Search ..."
+                type="search"
+                value={searchValue}
+                onChange={handleSearch}
+              />
+            ))}
 
           <SearchContext.Provider value={searchValue}>
             {children}

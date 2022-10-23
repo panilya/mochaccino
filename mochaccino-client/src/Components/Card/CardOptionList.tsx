@@ -13,7 +13,7 @@ const CardOptionList: React.FC<CardOptionListProps> = ({ data }) => {
       id="card"
     >
       <Card.Body className="card__body">
-        <span className="card__body-title">{convertCamel(data.provider)}</span>{" "}
+        <span className="card__body-title">{convertCamel(data.providerName)}</span>{" "}
         <div className="card__body-div">
           <span className="card__body-span-example">"{data.example}"</span>
         </div>

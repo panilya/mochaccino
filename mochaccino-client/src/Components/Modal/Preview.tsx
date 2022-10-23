@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useAppSelector, useGetOptions } from "../../Hooks/useRedux";
 import LoadingButton from "../LoadingButton/LoadingButton";
 import SpinnerComponent from "../Spinner/SpinnerComponent";
+import { useDownloadData } from "../../Hooks/useDownloadData";
 
 interface PreviewProps {}
 
@@ -16,6 +17,7 @@ const Preview: React.FC<PreviewProps> = () => {
   const ref = useRef<HTMLParagraphElement>(null);
   const { limit, format, header, separator, dialect, tableName } =
     useAppSelector((state) => state.options.presets);
+  const { columns } = useDownloadData();
 
   useEffect(() => {
     setTimeout(() => {
@@ -28,6 +30,7 @@ const Preview: React.FC<PreviewProps> = () => {
 
     setIsPreviewLoading(true);
     let body = {
+      columns: columns,
       providers: optionProviders,
       limit: Number(limit),
     };

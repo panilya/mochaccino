@@ -17,6 +17,7 @@ export interface IPresets {
 }
 export interface IProvider {
   provider: string;
+  providerName: string;
   example: string;
   id: string;
   locale: string;
