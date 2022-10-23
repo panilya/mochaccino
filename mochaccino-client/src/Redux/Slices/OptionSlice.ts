@@ -1,10 +1,11 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../Store";
-import { IProvider } from "../../Service/Interfaces";
+import { IPresets, IProvider } from "../../Service/Interfaces";
 
 interface OptionState {
   defaultLocale: string;
+  presets: IPresets;
   value: IProvider[];
 }
 export interface ISetLocale {
@@ -12,6 +13,14 @@ export interface ISetLocale {
   locale: string;
 }
 const initialState: OptionState = {
+  presets: {
+    limit: "1000",
+    dialect: "MySQL",
+    header: true,
+    format: "csv",
+    tableName: "",
+    separator: ",",
+  },
   defaultLocale: "us",
   value: [],
 };
@@ -44,11 +53,50 @@ export const optionSlice = createSlice({
     deleteOption: (state, action: PayloadAction<string>) => {
       state.value = state.value.filter((el) => el.id !== action.payload);
     },
+
+    setLimit: (state, action: PayloadAction<string>) => {
+      if (action.payload.charAt(0) === "-") {
+        state.presets["limit"] = "";
+      } else if (action.payload.charAt(0) === "0") {
+        state.presets["limit"] = action.payload.substring(1);
+      } else if (Number(action.payload) > 1000001) {
+        state.presets["limit"] = "1000000";
+      } else if (Number(action.payload) < 0) {
+        state.presets["limit"] = "1";
+      } else {
+        state.presets["limit"] = action.payload;
+      }
+    },
+    setDialect: (state, action: PayloadAction<string>) => {
+      state.presets["dialect"] = action.payload;
+    },
+    setFormat: (state, action: PayloadAction<string>) => {
+      state.presets["format"] = action.payload;
+    },
+    setTableName: (state, action: PayloadAction<string>) => {
+      state.presets["tableName"] = action.payload;
+    },
+    setHeaders: (state, action: PayloadAction<boolean>) => {
+      state.presets["header"] = action.payload;
+    },
+    setSeparator: (state, action: PayloadAction<string>) => {
+      state.presets["separator"] = action.payload;
+    },
   },
 });
 
-export const { addOption, deleteOption, setLocale, setDefaultLocale } =
-  optionSlice.actions;
+export const {
+  addOption,
+  deleteOption,
+  setLocale,
+  setDefaultLocale,
+  setDialect,
+  setFormat,
+  setHeaders,
+  setLimit,
+  setSeparator,
+  setTableName,
+} = optionSlice.actions;
 
 export const selectCount = (state: RootState) => state.options;
 

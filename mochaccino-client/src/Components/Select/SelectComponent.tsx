@@ -1,26 +1,27 @@
 import { Form } from "react-bootstrap";
+import { useAppDispatch, useAppSelector } from "../../Hooks/useRedux";
+import { setFormat } from "../../Redux/Slices/OptionSlice";
 import "./SelectComponent.scss";
-interface SelectComponentProps {
-  value: string;
-  setFormat: React.Dispatch<React.SetStateAction<string>>;
-}
+interface SelectComponentProps {}
 
-const SelectComponent: React.FC<SelectComponentProps> = (props) => {
+const SelectComponent: React.FC<SelectComponentProps> = () => {
+  const dispatch = useAppDispatch();
+  const { format } = useAppSelector((state) => state.options.presets);
   const handleFormatChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    props.setFormat(event.target.value);
+    dispatch(setFormat(event.target.value));
   };
   return (
     <>
       <Form.Label htmlFor="inputPassword5">Choose file type:</Form.Label>
       <Form.Select
         className="select"
-        value={props.value}
+        value={format}
         onChange={handleFormatChange}
         aria-label="Default select example"
       >
         <option value="csv">CSV</option>
         <option value="json">JSON</option>
-        <option value="json">SQL <span style={{ opacity: ".6" }}>[in development]</span></option>
+        <option value="sql">SQL</option>
       </Form.Select>
     </>
   );

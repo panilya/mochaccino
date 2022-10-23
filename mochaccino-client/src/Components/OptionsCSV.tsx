@@ -1,18 +1,22 @@
 import { Form, InputGroup } from "react-bootstrap";
-import { useDownloadData } from "../Hooks/useDownloadData";
+import { useAppDispatch, useAppSelector } from "../Hooks/useRedux";
+import { setSeparator, setHeaders } from "../Redux/Slices/OptionSlice";
 
-interface OptionsProps {}
+interface OptionsCSVProps {}
 
-const Options: React.FC<OptionsProps> = () => {
-  const { header, separator, setSeparator, setHeader } = useDownloadData();
+const OptionsCSV: React.FC<OptionsCSVProps> = () => {
+  const { separator, header } = useAppSelector(
+    (state) => state.options.presets
+  );
+  const dispatch = useAppDispatch();
   const handleSeparator = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSeparator(event.target.value);
+    dispatch(setSeparator(event.target.value));
   };
   return (
     <div>
       <Form>
         <Form.Label style={{ opacity: ".7", marginTop: "1em" }}>
-          <span style={{ opacity: ".6" }}>[in development]</span> Options:
+          Options:
         </Form.Label>
         <InputGroup className="mb-3">
           <InputGroup.Text>Separator?</InputGroup.Text>
@@ -25,7 +29,7 @@ const Options: React.FC<OptionsProps> = () => {
           />
         </InputGroup>
         <Form.Check
-          onChange={() => setHeader((prev) => !prev)}
+          onChange={() => dispatch(setHeaders(!header))}
           checked={header}
           type="checkbox"
           label="Include header"
@@ -35,4 +39,4 @@ const Options: React.FC<OptionsProps> = () => {
   );
 };
 
-export default Options;
+export default OptionsCSV;

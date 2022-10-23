@@ -7,10 +7,17 @@ export interface IFakeData {
   name: string;
   id: number;
 }
+export interface IPresets {
+  limit: string;
+  format: string;
+  header: boolean;
+  dialect: string;
+  tableName: string;
+  separator: string;
+}
 export interface IProvider {
   provider: string;
   example: string;
   id: string;
   locale: string;
 }
-

@@ -1,33 +1,41 @@
 import axios from "axios";
-import { useState } from "react";
-import { useGetOptions } from "./useRedux";
+import { useEffect, useState } from "react";
+import { useAppSelector, useGetOptions } from "./useRedux";
 
 export const useDownloadData = () => {
-  const [limit, setLimit] = useState<string>("1000");
-  const [format, setFormat] = useState("csv");
-  const [separator, setSeparator] = useState(",");
-  const [header, setHeader] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const optionProviders = useGetOptions();
+
+  const { separator, dialect, format, limit, header, tableName } =
+    useAppSelector((state) => state.options.presets);
+
+  const URL = () => {
+    let URLbase = "https://mochaccino-server.herokuapp.com/data";
+    let URLDownload = "/download";
+    let URLcsv = `?format=${format}&header=${header}&separator=${separator}`;
+    let URLsql = `?format=${format}&tableName=${tableName}&dialect=${dialect}`;
+    if (format === "csv") {
+      return URLbase + URLDownload + URLcsv;
+    }
+    if (format === "sql") {
+      return URLbase + URLDownload + URLsql;
+    } else {
+      return URLbase + URLDownload;
+    }
+  };
 
   const handleDownloadData = () => {
     setIsLoading(true);
     let body = {
-      header: header,
-      separator: separator,
       providers: optionProviders,
       limit: Number(limit),
     };
     axios
-      .post(
-        `https://mochaccino-server.herokuapp.com/data/download?format=${format}`,
-        body,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
+      .post(URL(), body, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
       .then((response) => {
         const contentDispositionHeader =
           response.headers["content-disposition"];
@@ -46,16 +54,8 @@ export const useDownloadData = () => {
       });
   };
   const store = {
-    header,
-    separator,
-    setHeader,
-    setSeparator,
     isLoading,
-    limit,
-    format,
-    setFormat,
     handleDownloadData,
-    setLimit,
     optionProviders,
   };
 

@@ -1,23 +1,16 @@
 import { Form } from "react-bootstrap";
 import { BiTrash } from "react-icons/bi";
-import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../Hooks/useRedux";
+import { useAppDispatch, useAppSelector } from "../../Hooks/useRedux";
 import { deleteOption, setLocale } from "../../Redux/Slices/OptionSlice";
-import { IProvider } from "../../Service/Interfaces";
 import CardOptionList from "../Card/CardOptionList";
 import "./OptionTable.scss";
 
-interface OptionTableProps {
-  optionList: IProvider[];
-  defaultLocale: string;
-}
+interface OptionTableProps {}
 
-const OptionTable: React.FC<OptionTableProps> = ({
-  optionList,
-  defaultLocale,
-}) => {
+const OptionTable: React.FC<OptionTableProps> = () => {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
+  const defaultLocale = useAppSelector((state) => state.options.defaultLocale);
+  const optionList = useAppSelector((state) => state.options.value);
 
   return (
     <section className="option-table">
@@ -27,7 +20,7 @@ const OptionTable: React.FC<OptionTableProps> = ({
       {optionList.length > 0 &&
         optionList.map((el, id) => {
           return (
-            <div className="option-table__row">
+            <div key={id} className="option-table__row">
               <BiTrash
                 onClick={() => dispatch(deleteOption(el.id))}
                 className="option-table__delete"
