@@ -53,8 +53,60 @@ public class InfoService {
     );
 
     private final static List<ProviderInfo> PHONE_NUMBER_PROVIDERS_INFO = List.of(
-            new ProviderInfo("phoneNumber", "1-931-650-5228"),
+            new ProviderInfo("phoneNumberNational", "(980) 636-4539"),
+            new ProviderInfo("phoneNumberInternational", "+1 814-606-3102"),
             new ProviderInfo("cellPhone", "(973) 415-1746")
+    );
+
+    private final static List<ProviderInfo> COMPANY_PROVIDERS_INFO = List.of(
+            new ProviderInfo("companyName", "Kuhn-Ortiz"),
+            new ProviderInfo("companySuffix", "Group"),
+            new ProviderInfo("companyIndustry", "Consumer Electronics"),
+            new ProviderInfo("companyProfession", "lawyer"),
+            new ProviderInfo("companyURL", "www.schummllc.info")
+    );
+
+    private final static List<ProviderInfo> VEHICLE_PROVIDERS_INFO = List.of(
+            new ProviderInfo("vehicleVIN", "DP5P03ZDA8AJ91242"),
+            new ProviderInfo("vehicleManufacturer", "Hyundai"),
+            new ProviderInfo("vehicleMaker", "Peugeot"),
+            new ProviderInfo("vehicleModel", "Corolla"),
+            new ProviderInfo("vehicleMakeAndModel", "Toyota Camry"),
+            new ProviderInfo("vehicleStyle", "XL"),
+            new ProviderInfo("vehicleColor", "Blue"),
+            new ProviderInfo("vehicleUpholsteryColor", "Brown"),
+            new ProviderInfo("vehicleUpholsteryFabric", "Cloth"),
+            new ProviderInfo("vehicleUpholstery", "Brown Leather"),
+            new ProviderInfo("vehicleTransmission", "Automatic"),
+            new ProviderInfo("vehicleDriveType", "RWD"),
+            new ProviderInfo("vehicleFuelType", "Gasoline"),
+            new ProviderInfo("vehicleCarType", "Minivan"),
+            new ProviderInfo("vehicleEngine", "8 Cylinder Engine"),
+            new ProviderInfo("vehicleNumberOfDoors", "4"),
+            new ProviderInfo("vehicleLicensePlate", "pow-3971")
+    );
+
+    private final static List<ProviderInfo> WEATHER_PROVIDERS_INFO = List.of(
+            new ProviderInfo("weatherDescription", "Partly cloudy"),
+            new ProviderInfo("weatherTemperatureCelsius", "-7°C"),
+            new ProviderInfo("weatherTemperatureFahrenheit", "89°F")
+    );
+
+    private final static List<ProviderInfo> STOCK_PROVIDERS_INFO = List.of(
+            new ProviderInfo("stockNSDQsymbol", "MERC"),
+            new ProviderInfo("stockNYSEsymbol", "JFR")
+    );
+
+    private final static List<ProviderInfo> GENDER_PROVIDERS_INFO = List.of(
+            new ProviderInfo("genderBinaryType", "Female"),
+            new ProviderInfo("genderShortBinaryType", "f"),
+            new ProviderInfo("genderType", "NonBinary")
+    );
+
+    private final static List<ProviderInfo> COMPUTER_PROVIDERS_INFO = List.of(
+            new ProviderInfo("computerOperatingSystem", "Windows 11"),
+            new ProviderInfo("computerPlatform", "macOS"),
+            new ProviderInfo("computerType", "workstation")
     );
 
     public enum ProviderGroupInfo {
@@ -63,7 +115,13 @@ public class InfoService {
         PHONE_NUMBER_GROUP(new GroupInfoEntity(PHONE_NUMBER_PROVIDERS_INFO, "Phone Number", "Phone number group", 3L)),
         BUSINESS_GROUP(new GroupInfoEntity(BUSINESS_GROUP_PROVIDERS_INFO, "Business", "Business group", 4L)),
         COMMERCE_GROUP(new GroupInfoEntity(COMMERCE_GROUP_PROVIDERS_INFO, "Commerce", "Commerce group", 5L)),
-        INTERNET_GROUP(new GroupInfoEntity(INTERNET_GROUP_PROVIDERS_INFO, "Internet", "Internet group", 6L));
+        INTERNET_GROUP(new GroupInfoEntity(INTERNET_GROUP_PROVIDERS_INFO, "Internet", "Internet group", 6L)),
+        COMPANY_GROUP(new GroupInfoEntity(COMPANY_PROVIDERS_INFO, "Company", "Company group", 7L)),
+        VEHICLE_GROUP(new GroupInfoEntity(VEHICLE_PROVIDERS_INFO, "Vehicle", "Vehicle group", 8L)),
+        WEATHER_GROUP(new GroupInfoEntity(WEATHER_PROVIDERS_INFO, "Weather", "Weather group", 9L)),
+        STOCK_GROUP(new GroupInfoEntity(STOCK_PROVIDERS_INFO, "Stock", "Stock group", 10L)),
+        GENDER_GROUP(new GroupInfoEntity(GENDER_PROVIDERS_INFO, "Gender", "Gender group", 11L)),
+        COMPUTER_GROUP(new GroupInfoEntity(COMPUTER_PROVIDERS_INFO, "Computer", "Computer group", 12L));
 
         private final GroupInfoEntity groupInfo;
 

@@ -50,8 +50,54 @@ public enum AvailableDataProviders {
     INTERNET_USERAGENT("userAgent", () -> "user_agent", faker -> faker.internet().userAgent()),
 
     // Phone Number
-    PHONE_NUMBER("phoneNumber", () -> "phone_number", faker -> faker.phoneNumber().phoneNumber()),
-    CELL_PHONE("cellPhone", () -> "cell_phone", faker -> faker.phoneNumber().cellPhone());
+    PHONE_NUMBER_NATIONAL("phoneNumberNational", () -> "phone_number_national", faker -> faker.phoneNumber().phoneNumber()),
+    PHONE_NUMBER_INTERNATIONAL("phoneNumberInternational", () -> "phone_number_international", faker -> faker.phoneNumber().phoneNumberInternational()),
+    CELL_PHONE("cellPhone", () -> "cell_phone", faker -> faker.phoneNumber().cellPhone()),
+
+    // Company
+    COMPANY_NAME("companyName", () -> "company_name", faker -> faker.company().name()),
+    COMPANY_SUFFIX("companySuffix", () -> "company_suffix", faker -> faker.company().suffix()),
+    COMPANY_INDUSTRY("companyIndustry", () -> "company_industry", faker -> faker.company().industry()),
+    COMPANY_PROFESSION("companyProfession", () -> "company_profession", faker -> faker.company().profession()),
+    COMPANY_URL("companyURL", () -> "company_url", faker -> faker.company().url()),
+
+    // Vehicle
+    VEHICLE_VIN("vehicleVIN", () -> "vehicle_vin", faker -> faker.vehicle().vin()),
+    VEHICLE_MANUFACTURER("vehicleManufacturer", () -> "vehicle_manufacturer", faker -> faker.vehicle().manufacturer()),
+    VEHICLE_MAKE("vehicleMaker", () -> "vehicle_make", faker -> faker.vehicle().make()),
+    VEHICLE_MODEL("vehicleModel", () -> "vehicle_model", faker -> faker.vehicle().model()),
+    VEHICLE_MAKE_AND_MODEL("vehicleMakeAndModel", () -> "vehicle_make_and_model", faker -> faker.vehicle().makeAndModel()),
+    VEHICLE_STYLE("vehicleStyle", () -> "vehicle_style", faker -> faker.vehicle().style()),
+    VEHICLE_COLOR("vehicleColor", () -> "vehicle_color", faker -> faker.vehicle().color()),
+    VEHICLE_UPHOLSTERY_COLOR("vehicleUpholsteryColor", () -> "vehicle_upholstery_color", faker -> faker.vehicle().upholsteryColor()),
+    VEHICLE_UPHOLSTERY_FABRIC("vehicleUpholsteryFabric", () -> "vehicle_upholstery_fabric", faker -> faker.vehicle().upholsteryFabric()),
+    VEHICLE_UPHOLSTERY("vehicleUpholstery", () -> "vehicle_upholstery", faker -> faker.vehicle().upholstery()),
+    VEHICLE_TRANSMISSION("vehicleTransmission", () -> "vehicle_transmission", faker -> faker.vehicle().transmission()),
+    VEHICLE_DRIVE_TYPE("vehicleDriveType", () -> "vehicle_drive_type", faker -> faker.vehicle().driveType()),
+    VEHICLE_FUEL_TYPE("vehicleFuelType", () -> "vehicle_fuel_type", faker -> faker.vehicle().fuelType()),
+    VEHICLE_CAR_TYPE("vehicleCarType", () -> "vehicle_car_type", faker -> faker.vehicle().carType()),
+    VEHICLE_ENGINE("vehicleEngine", () -> "vehicle_engine", faker -> faker.vehicle().engine()),
+    VEHICLE_NUMBER_OF_DOORS("vehicleNumberOfDoors", () -> "vehicle_number_of_doors", faker -> faker.vehicle().doors()),
+    VEHICLE_LICENSE_PLATE("vehicleLicensePlate", () -> "vehicle_license_plate", faker -> faker.vehicle().licensePlate()),
+
+    // Weather
+    WEATHER_DESCRIPTION("weatherDescription", () -> "weather_description", faker -> faker.weather().description()),
+    WEATHER_TEMPERATURE_CELSIUS("weatherTemperatureCelsius", () -> "weather_temperature_celsius", faker -> faker.weather().temperatureCelsius()),
+    WEATHER_TEMPERATURE_FAHRENHEIT("weatherTemperatureFahrenheit", () -> "weather_temperature_fahrenheit", faker -> faker.weather().temperatureFahrenheit()),
+
+    // Stock
+    STOCK_NSDQ("stockNSDQsymbol", () -> "stock_nsdq_symbol", faker -> faker.stock().nsdqSymbol()),
+    STOCK_NYSE("stockNYSEsymbol", () -> "stock_nyse_symbol", faker -> faker.stock().nyseSymbol()),
+
+    // Gender
+    GENDER_BINARY_TYPE("genderBinaryType", () -> "gender_binary_type", faker -> faker.gender().binaryTypes()),
+    GENDER_SHORT_BINARY_TYPE("genderShortBinaryType", () -> "gender_short_binary_type", faker -> faker.gender().shortBinaryTypes()),
+    GENDER_TYPE("genderType", () -> "gender_type", faker -> faker.gender().types()),
+
+    // Computer
+    COMPUTER_OPERATING_SYSTEM("computerOperatingSystem", () -> "computer_operating_system", faker -> faker.computer().operatingSystem()),
+    COMPUTER_PLATFORM("computerPlatform", () -> "computer_platform", faker -> faker.computer().platform()),
+    COMPUTER_TYPE("computerType", () -> "computer_type", faker -> faker.computer().type());
 
     private final String name;
     private final Supplier<String> header; // Header of CSV file
