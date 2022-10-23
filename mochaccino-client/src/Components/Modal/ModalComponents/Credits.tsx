@@ -12,7 +12,7 @@ const Credits: React.FC<CreditsProps> = () => {
           target="_blank"
           className="home__credits"
         >
-          Illya Pantsir{" "}
+          Ilya Pantsyr{" "}
         </a>
         <br />
         Frontend by{" "}
