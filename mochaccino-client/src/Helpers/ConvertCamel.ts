@@ -27,6 +27,10 @@ export const exceptions = [
     case: "uuidv3",
     default: "UUIDv3",
   },
+  {
+    case: "vehicleVIN",
+    default: "Vehicle VIN",
+  },
 ];
 
 export const convertCamel = (camelString: string) => {

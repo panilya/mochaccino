@@ -1,8 +1,7 @@
 import axios from "axios";
 import JSONPretty from "react-json-pretty";
 import { useEffect, useRef, useState } from "react";
-import { useLocation } from "react-router-dom";
-import { useGetOptions } from "../../Hooks/useRedux";
+import { useAppSelector, useGetOptions } from "../../Hooks/useRedux";
 import LoadingButton from "../LoadingButton/LoadingButton";
 import SpinnerComponent from "../Spinner/SpinnerComponent";
 
@@ -11,10 +10,12 @@ interface PreviewProps {}
 const Preview: React.FC<PreviewProps> = () => {
   const [isPreviewLoading, setIsPreviewLoading] = useState(false);
   const [previewData, setPreviewData] = useState();
+  const [error, setError] = useState();
   const [isCopied, setIsCopied] = useState(false);
   const optionProviders = useGetOptions();
   const ref = useRef<HTMLParagraphElement>(null);
-  const { limit, format } = useLocation().state;
+  const { limit, format, header, separator, dialect, tableName } =
+    useAppSelector((state) => state.options.presets);
 
   useEffect(() => {
     setTimeout(() => {
@@ -23,6 +24,8 @@ const Preview: React.FC<PreviewProps> = () => {
   }, [isCopied]);
 
   useEffect(() => {
+    console.log("start");
+
     setIsPreviewLoading(true);
     let body = {
       providers: optionProviders,
@@ -30,7 +33,11 @@ const Preview: React.FC<PreviewProps> = () => {
     };
     axios
       .post(
-        `https://mochaccino-server.herokuapp.com/data?format=${format}`,
+        format === "csv"
+          ? `https://mochaccino-server.herokuapp.com/data?format=${format}&header=${header}&separator=${separator}`
+          : format === "sql"
+          ? `https://mochaccino-server.herokuapp.com/data?format=${format}&tableName=${tableName}&dialect=${dialect}`
+          : "https://mochaccino-server.herokuapp.com/data?format=json",
         body,
         {
           headers: {
@@ -39,13 +46,15 @@ const Preview: React.FC<PreviewProps> = () => {
         }
       )
       .then((response) => {
+        console.log("then ");
         setPreviewData(response.data);
       })
-      .finally(() => {
-        setIsPreviewLoading(false);
-      })
       .catch((err) => {
-        console.log(err.status);
+        setError(err);
+      })
+      .finally(() => {
+        console.log("finnaly");
+        setIsPreviewLoading(false);
       });
   }, []);
 
@@ -57,6 +66,7 @@ const Preview: React.FC<PreviewProps> = () => {
           <JSONPretty data={previewData}></JSONPretty>
         </p>
       )}
+      {error && <h1>Error : {error}</h1>}
       {!isPreviewLoading && (
         <LoadingButton
           style={{
