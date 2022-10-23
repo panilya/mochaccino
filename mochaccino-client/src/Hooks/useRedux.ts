@@ -7,5 +7,5 @@ export const useAppDispatch: () => AppDispatch = useDispatch;
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 export const useGetOptions = () => {
   const optionsList = useAppSelector((state) => state.options.value);
-  return optionsList.map((el) => el.provider);
+  return optionsList.map((el) => el.providerName);
 };

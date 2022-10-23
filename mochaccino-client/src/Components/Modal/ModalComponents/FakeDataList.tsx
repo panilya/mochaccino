@@ -16,7 +16,7 @@ const FakeDataList: React.FC<FakeDataListProps> = () => {
   const filteredProviders =
     list &&
     list.providers.filter((el) =>
-      searchValue === "" ? el : el.provider.toLowerCase().includes(searchValue)
+      searchValue === "" ? el : el.providerName.toLowerCase().includes(searchValue)
     );
 
   return (

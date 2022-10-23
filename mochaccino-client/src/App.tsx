@@ -6,6 +6,7 @@ import Home from "./Page/Home/Home";
 import NotFound from "./Page/NotFound";
 import CategoriesList from "./Components/Modal/ModalComponents/CategoriesList";
 import "./Style/App.scss";
+import Credits from "./Components/Modal/ModalComponents/Credits";
 
 const App = () => {
   return (
@@ -17,6 +18,14 @@ const App = () => {
             element={
               <ModalComponent>
                 <CategoriesList />
+              </ModalComponent>
+            }
+          ></Route>
+          <Route
+            path="credits"
+            element={
+              <ModalComponent>
+                <Credits />
               </ModalComponent>
             }
           ></Route>

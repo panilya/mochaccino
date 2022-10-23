@@ -4,11 +4,14 @@ import { useAppSelector, useGetOptions } from "./useRedux";
 
 export const useDownloadData = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const optionsList = useAppSelector((state) => state.options.value);
   const optionProviders = useGetOptions();
-
   const { separator, dialect, format, limit, header, tableName } =
     useAppSelector((state) => state.options.presets);
-
+  const columns = optionsList.reduce(
+    (acc, cur) => ({ ...acc, [cur.providerName]: cur.provider }),
+    {}
+  );
   const URL = () => {
     let URLbase = "https://mochaccino-server.herokuapp.com/data";
     let URLDownload = "/download";
@@ -28,6 +31,7 @@ export const useDownloadData = () => {
     setIsLoading(true);
     let body = {
       providers: optionProviders,
+      columns: columns,
       limit: Number(limit),
     };
     axios
@@ -54,6 +58,7 @@ export const useDownloadData = () => {
       });
   };
   const store = {
+    columns,
     isLoading,
     handleDownloadData,
     optionProviders,

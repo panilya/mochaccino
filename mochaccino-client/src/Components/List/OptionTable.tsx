@@ -1,7 +1,11 @@
 import { Form } from "react-bootstrap";
 import { BiTrash } from "react-icons/bi";
 import { useAppDispatch, useAppSelector } from "../../Hooks/useRedux";
-import { deleteOption, setLocale } from "../../Redux/Slices/OptionSlice";
+import {
+  changeOption,
+  deleteOption,
+  // setLocale,
+} from "../../Redux/Slices/OptionSlice";
 import CardOptionList from "../Card/CardOptionList";
 import "./OptionTable.scss";
 
@@ -9,7 +13,7 @@ interface OptionTableProps {}
 
 const OptionTable: React.FC<OptionTableProps> = () => {
   const dispatch = useAppDispatch();
-  const defaultLocale = useAppSelector((state) => state.options.defaultLocale);
+  // const defaultLocale = useAppSelector((state) => state.options.defaultLocale);
   const optionList = useAppSelector((state) => state.options.value);
 
   return (
@@ -25,7 +29,21 @@ const OptionTable: React.FC<OptionTableProps> = () => {
                 onClick={() => dispatch(deleteOption(el.id))}
                 className="option-table__delete"
               />
-              <CardOptionList key={id} data={el} />{" "}
+              <CardOptionList key={id} data={el} />
+              <Form.Control
+                placeholder={el.providerName}
+                value={el.provider}
+                onChange={(event) =>
+                  dispatch(
+                    changeOption({ id: el.id, provider: event.target.value })
+                  )
+                }
+                style={{ height: "100%", width: "50%" }}
+                defaultValue={el.providerName}
+              />
+
+              {/*
+               Locales
               <Form.Select
                 id="option-table-row__select"
                 style={{ height: "100%" }}
@@ -38,7 +56,7 @@ const OptionTable: React.FC<OptionTableProps> = () => {
                 <option value="en">en</option>
                 <option value="us">us</option>
                 <option value="ua">ua</option>
-              </Form.Select>
+              </Form.Select> */}
             </div>
           );
         })}

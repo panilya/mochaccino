@@ -12,6 +12,10 @@ export interface ISetLocale {
   id: string;
   locale: string;
 }
+export interface IChangeProvider {
+  id: string;
+  provider: string;
+}
 const initialState: OptionState = {
   presets: {
     limit: "1000",
@@ -32,10 +36,19 @@ export const optionSlice = createSlice({
     addOption: (state, action: PayloadAction<IProvider>) => {
       state.value.push({
         ...action.payload,
+        providerName:action.payload.provider,
         id: nanoid(),
         locale: state.defaultLocale,
       });
     },
+    changeOption: (state, action: PayloadAction<IChangeProvider>) => {
+      state.value.map((el) => {
+        if (el.id === action.payload.id) {
+          return (el["provider"] = action.payload.provider);
+        }
+      });
+    },
+
     setDefaultLocale: (state, action: PayloadAction<string>) => {
       state.defaultLocale = action.payload;
       if (state.defaultLocale !== "custom") {
@@ -96,6 +109,7 @@ export const {
   setLimit,
   setSeparator,
   setTableName,
+  changeOption,
 } = optionSlice.actions;
 
 export const selectCount = (state: RootState) => state.options;
