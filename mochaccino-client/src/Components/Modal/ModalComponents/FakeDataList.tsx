@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useGetGroupsQuery } from "../../../Redux/Slices/GroupsQuery";
 import { SearchContext } from "../../../Service/Contexts/searchContext";
@@ -16,14 +16,18 @@ const FakeDataList: React.FC<FakeDataListProps> = () => {
   const filteredProviders =
     list &&
     list.providers.filter((el) =>
-      searchValue === "" ? el : el.providerName.toLowerCase().includes(searchValue)
+      searchValue === ""
+        ? el
+        : el.provider.toLowerCase().includes(searchValue)
     );
+
+
 
   return (
     <div className="fake-data-list">
       {isLoading && <SpinnerComponent />}
       {filteredProviders &&
-        filteredProviders.map((el,id) => <CardOption key={id} data={el} />)}
+        filteredProviders.map((el, id) => <CardOption key={id} data={el} />)}
     </div>
   );
 };
