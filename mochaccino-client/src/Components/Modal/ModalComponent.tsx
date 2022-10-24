@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import { Form } from "react-bootstrap";
@@ -17,6 +17,10 @@ const ModalComponent: React.FC<ModalComponentProps> = ({ children }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    setSearchValue("");
+  }, [location.pathname]);
+  
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
   };

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useGetGroupsQuery } from "../../../Redux/Slices/GroupsQuery";
 import { SearchContext } from "../../../Service/Contexts/searchContext";
 import CardCategory from "../../Card/CardCategory";
@@ -20,6 +20,10 @@ const CategoriesList: React.FC<CategoriesListProps> = () => {
   const categoryList =
     filteredList &&
     filteredList.map((data, id) => <CardCategory key={id} data={data} />);
+
+  useEffect(() => {
+    
+  }, []);
 
   return (
     <div className="categories-list">
