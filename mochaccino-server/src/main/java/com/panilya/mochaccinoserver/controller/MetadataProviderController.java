@@ -6,8 +6,6 @@ import com.panilya.mochaccinoserver.infoservice.InfoService;
 import com.panilya.mochaccinoserver.model.GroupInfoEntity;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import io.swagger.annotations.Example;
-import io.swagger.annotations.ExampleProperty;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;

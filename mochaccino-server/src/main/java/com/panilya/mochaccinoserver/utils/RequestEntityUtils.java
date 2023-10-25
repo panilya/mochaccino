@@ -7,7 +7,7 @@ import com.panilya.mochaccinoserver.dataservice.DataFormat;
 import java.lang.reflect.Field;
 import java.util.List;
 
-public class RequestEntityUtils {
+public final class RequestEntityUtils {
 
     public static List<String> getValues(Object object) throws IllegalAccessException, NoSuchFieldException {
         Field providers = object.getClass().getDeclaredField("providers");
