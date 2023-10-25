@@ -16,6 +16,6 @@ public class JsonFormatProviderService extends BaseDataProvider {
 
     @Override
     protected String generateData(Schema schema, RequestEntity requestEntity, RequestParamsContainer parameters) {
-        return new JsonTransformer<>().generate(schema, requestEntity.getLimit());
+        return JsonTransformer.builder().build().generate(schema, requestEntity.getLimit());
     }
 }

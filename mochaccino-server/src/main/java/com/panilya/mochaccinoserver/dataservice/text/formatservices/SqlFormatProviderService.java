@@ -4,8 +4,8 @@ import com.panilya.mochaccinoserver.model.RequestEntity;
 import com.panilya.mochaccinoserver.model.RequestParamsContainer;
 import net.datafaker.Faker;
 import net.datafaker.transformations.Schema;
-import net.datafaker.transformations.SqlDialect;
-import net.datafaker.transformations.SqlTransformer;
+import net.datafaker.transformations.sql.SqlDialect;
+import net.datafaker.transformations.sql.SqlTransformer;
 import org.springframework.stereotype.Service;
 
 import java.util.NoSuchElementException;
@@ -19,7 +19,7 @@ public class SqlFormatProviderService extends BaseDataProvider {
 
     @Override
     protected String generateData(Schema schema, RequestEntity requestEntity, RequestParamsContainer parameters) {
-        return new SqlTransformer.SqlTransformerBuilder().dialect(determineDialect(parameters.dialect)).tableName(parameters.tableName).build().generate(schema, requestEntity.getLimit());
+        return SqlTransformer.builder().dialect(determineDialect(parameters.dialect)).tableName(parameters.tableName).build().generate(schema, requestEntity.getLimit());
     }
 
     private SqlDialect determineDialect(String dialect) {
